@@ -13,7 +13,7 @@ exercises: 20
 # How do I run Maestro on the cluster?
 
 What happens when we want to run on the cluster ("to run a batch job")rather
-than the login node? The cluster we are using uses Slurm, and Maestro has 
+than the login node? The cluster we are using uses Slurm, and Maestro has
 built in support for Slurm. We just need to tell Maestro which resources we
 need Slurm to grab for our run.
 
@@ -23,14 +23,14 @@ names of the machine, bank, and queue in which your jobs should run.
 ```yml
 batch:
     type: slurm
-    host: pascal # enter the machine you'll run on
-    bank: lc # enter the bank to charge
-    queue: pvis # enter the partition in which your job should run
+    host: quartz # enter the machine you'll run on
+    bank: guests # enter the bank to charge
+    queue: pdebug # enter the partition in which your job should run
 ```
 
 Second, we need to specify the number of nodes, number of processes, and walltime
-for *each study* to be run from our YAML file. This information goes under each
-study's `run` field:
+for *each step* in our YAML file. This information goes under each
+step's `run` field. Here we specify 1 node, 1 process, and a time limit of 30 seconds:
 
 ```yml
 (...)
@@ -42,8 +42,7 @@ study's `run` field:
           walltime: "00:00:30"
 ```
 
-Here we specify 1 node, 1 process, and a time limit of 30 seconds. **Note** that
-the format of the walltime includes quotation marks -- "<Hours>:<Minutes>:<Seconds>".
+Whereas `run` previously held only info about the command we wanted to execute, steps run on the cluster include a specification of the resources needed in order to execute. **Note** that the format of the walltime includes quotation marks -- "{Hours}:{Minutes}:{Seconds}".
 
 With these changes, our updated YAML file might look like
 
@@ -54,9 +53,9 @@ description:
 
 batch:
     type: slurm
-    host: pascal # machine to run on
-    bank: lc # bank
-    queue: pvis # partition
+    host: quartz # machine to run on
+    bank: guests # bank
+    queue: pdebug # partition
 
 study:
     - name: hostname-login

@@ -39,8 +39,8 @@ description:
 batch:
     type: slurm
     host: quartz # machine to run on
-    bank: guest # bank
-    queue: pbatch # partition
+    bank: guests # bank
+    queue: pdebug # partition
 
 env:
     variables:
@@ -84,7 +84,7 @@ maestro run depends.yaml
 ```
 
 You can then `cat` the output of both steps to `stdout` via a
-command of the form 
+command of the form
 
 ```bash
 cat Episode5/Dependency-exploration-{FILL}/date-*/*.txt
@@ -133,7 +133,7 @@ a line with the following format must be added to a step's
 ```
 
 `{STEP NAME}` is replaced by the name of the step from the
-study that you want the current step to depend upon. 
+study that you want the current step to depend upon.
 
 If we update `date-login` to include a dependency, we'll see
 
@@ -192,8 +192,8 @@ description:
 batch:
     type: slurm
     host: quartz # machine to run on
-    bank: guest # bank
-    queue: pbatch # partition
+    bank: guests # bank
+    queue: pdebug # partition
 
 env:
     variables:
@@ -263,7 +263,7 @@ Now our new step definition will look like
 ## Using the outputs from a previous step
 
 ### Manually plotting scaling results
-In your working directory, you should have a copy of 
+In your working directory, you should have a copy of
 `plot_terse_amdahl_results.py`. The syntax for running this script is
 
 ```
@@ -329,7 +329,7 @@ something like
           depends: [amdahl_*]
 ```
 
-The trouble is that we don't know the exact value of 
+The trouble is that we don't know the exact value of
 `Episode5/Amdahl_<Date>_<Time>/amdahl` for a job that we haven't run
 yet. Luckily Maestro gives us a placeholder to the equivalent of this path
 for the current job --- `$(amdahl.workspace)`. This is the workspace for
@@ -367,7 +367,7 @@ live, so let's be more precise:
 
 ::: challenge
 
-Update `amdahl.yaml` so that 
+Update `amdahl.yaml` so that
 
 * one step definiton runs `amdahl` for 85% parallelizable code using [2, 4, 8, 16, 32] tasks
 * a second step plots the results.
@@ -384,8 +384,8 @@ description:
 batch:
     type: slurm
     host: quartz # machine to run on
-    bank: guest # bank
-    queue: pbatch # partition
+    bank: guests # bank
+    queue: pdebug # partition
 
 env:
     variables:
@@ -441,4 +441,3 @@ rename, for example), the job will fail before submitting work to the queue.
 - "You can create a dependency with the `depends: [{step name}]` syntax."
 - "Dependency syntax changes to `depends: [{step name}_*]` for parameterized steps."
 :::
-

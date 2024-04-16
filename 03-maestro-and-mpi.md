@@ -17,8 +17,11 @@ exercises: 20
 :::
 
 Now it's time to start getting back to our real workflow. We can execute a
-command on the cluster, but what about executing the MPI application we are
-interested in? Our application is called `amdahl` and is available in the
+command on the cluster, but how do we effectively leverage cluster resources
+and actually run in parallel? In this episode, we'll learn how to execute
+an application that can be run in parallel.
+
+Our application is called `amdahl` and is available in the
 python virtual environment we're already using for `maestro`. Check that
 you have access to this binary by running `which amdahl` at the command
 line. You should see something like
@@ -36,33 +39,95 @@ processor changes as we use more processors.
 
 ::: challenge
 
-Copy `hostname.yaml` to a new file, `amdahl.yaml` with 
-`cp hostname.yaml amdahl.yaml`.
+Without using maestro, simply run amdahl on your login node by typing `amdahl` on the command line and hitting enter.
 
-Open the new file, `amdahl.yaml`. Remove the "hostname-login" step so that
-the study in this file has only a single step. Rename the "hostname_batch"
-step to "amdahl" or something similar. Update other names and descriptions
-in this file to reflect the new binary. Update the command under your study
-so that the `amdahl` binary will run and write to an output file.
+```
+amdahl
+````
+
+What is amdahl doing?
 
 ::::::solution
 
-The contents of `amdahl.yaml` should look something like
+You should see output that looks roughly like
+
+```
+(maestro_venv) janeh@pascal83:~$ amdahl
+Doing 30.000000 seconds of 'work' on 1 processor,
+ which should take 30.000000 seconds with 0.800000 parallel proportion of the workload.
+
+  Hello, World! I am process 0 of 1 on pascal83. I will do all the serial 'work' for 5.243022 seconds.
+  Hello, World! I am process 0 of 1 on pascal83. I will do parallel 'work' for 25.233023 seconds.
+
+Total execution time (according to rank 0): 30.537750 seconds
+```
+
+In short, this program prints the amount of time spent working serially and
+the amount of time it spends on the parallel section of a code. On the login
+node, only a single task is created, so there shouldn't be any speedup from
+running in parallel, but soon we'll use more tasks to run this program!
+::::::
+:::
+
+In the last challenge, we saw how the `amdahl` executable behaves when run on
+the login node. In the next challenge, let's get `amdahl` running on the
+login node using `maestro`.
+
+::: challenge
+
+Using what you learned in episode 1, create a Maestro YAML file that runs
+`amdahl` on the login node and captures the output in a file.
+
+::::::solution
+
+Your YAML file might be named `amdahl.yaml` and its contents might look like
+
 
 ```yml
 description:
     name: Amdahl
     description: Run a parallel program
 
+study:
+    - name: amdahl
+      description: run the amdahl executable
+      run:
+          cmd: |
+               amdahl >> amdahl.out
+```
+
+and you would run with `maestro run amdahl.yaml`.
+
+::::::
+:::
+
+Next, let's get `amdahl` running in batch, on a compute node.
+
+::: challenge
+
+Update `amdahl.yaml` from the last challenge so that this workflow runs
+on a compute node with a single task. Use the examples from episode 2!
+
+Once you've done this. Examine the output and verify that only a single task is reporting on its work in your output file.
+
+::::::solution
+
+The contents of `amdahl.yaml` should now look something like
+
+```yml
+description:
+    name: Amdahl
+    description: Run on the cluster
+
 batch:
     type: slurm
     host: quartz # machine to run on
-    bank: guest # bank
-    queue: pbatch # partition
+    bank: guests # bank
+    queue: pdebug # partition
 
 study:
     - name: amdahl
-      description: run in parallel
+      description: run on the cluster
       run:
           cmd: |
                amdahl >> amdahl.out
@@ -71,27 +136,49 @@ study:
           walltime: "00:00:30"
 ```
 
-Exact wording for names and descriptions is not important, but should
-help you to remember what this file and its study are doing.
+In your `amdahl.out` file, you should see that only a single task ---
+task 0 of 1 --- is mentioned.
 
+Note --- Exact wording for names and descriptions is not important, but should
+help you to remember what this file and its study are doing.
 ::::::
 :::
 
 ::: challenge
 
 After checking that `amdahl.yaml` looks similar to the solution above,
-run `maestro run amdahl.yaml`. Then, update the number of `nodes` and
-`procs` each to `2`. You should also increase the walltime a bit, to
-a minute or minute and a half. Then rerun `maestro run amdahl.yaml`.
-How does the output change? How did you expect it to change?
-
-*Hint* Remember that if you run `squeue -u <your username>`, you can
-see the node(s) assigned to your slurm job.
+update the number of `nodes` and `procs` each to `2` and rerun `maestro run amdahl.yaml`.
+How many processes report their work in the output file?
 
 ::::::solution
 
-In your output files (`amdahl.out` if using the script in the last
-solution), you probably see output looking something like
+Your YAML files contents are now updated to
+
+```yml
+description:
+    name: Amdahl
+    description: Run on the cluster
+
+batch:
+    type: slurm
+    host: quartz # machine to run on
+    bank: guests # bank
+    queue: pdebug # partition
+
+study:
+    - name: amdahl
+      description: run on the cluster
+      run:
+          cmd: |
+               amdahl >> amdahl.out
+          nodes: 2
+          procs: 2
+          walltime: "00:00:30"
+```
+
+
+In your output file `amdahl.out`, you probably still see output looking
+something like
 
 ```
 Doing 30.000000 seconds of 'work' on 1 processor,
@@ -104,23 +191,24 @@ Total execution time (according to rank 0): 27.755552 seconds
 ```
 
 Notice that this output refers to only "1 processor" and mentions
-only `pascal17`, even in the job that requested and received two
-nodes. You will likely see a different number, but most you will
-still see only a single processor mentioned in the output. If you
-ran `squeue -u <username>` while the job was in queue, you should
-have seen two unique node numbers assigned to your job.
+only one process. We requested two processes, but only a single one
+reports back!
 
-So what's going on? If your job were really *using* both nodes
-that were assigned to it, then both processes would have written
+So what's going on? If your job were really *using* both tasks
+that were assigned to it, then both would have written
 to `amdahl.out`.
-
 ::::::
 :::
+
+Here's the takeaway from the challenges above: It's not enough to have
+both parallel resources and a binary/executable/program that is enabled to
+run in parallel. We actually need to invoke MPI in order to force
+our parallel program to use parallel resources.
 
 ## Maestro and MPI
 
 We didn't really run an MPI application in the last section as we only ran on
-one processor. How do we request to run on multiple processors for a single
+one processor. How do we request to run using multiple processes for a single
 step?
 
 The answer is that we have to tell Slurm that we want to use MPI. In the Intro
@@ -140,8 +228,8 @@ as many nodes and processes we've already told Slurm we want to use.
 ::: challenge
 
 Update `amdahl.yaml` to include `$(LAUNCHER)` before the call to `amdahl`
-in your study's `run` field. Re-run maestro with the updated YAML and
-explore the outputs. How many nodes are mentioned in `amdahl.out`?
+in your study's `cmd` field. Run maestro with the updated YAML and
+explore the outputs. How many tasks are mentioned in `amdahl.out`?
 In the Slurm submission script created by Maestro (included in the same
 subdirectory as `amdahl.out`), what text was used to replace `$(LAUNCHER)`?
 
@@ -157,8 +245,8 @@ description:
 batch:
     type: slurm
     host: quartz # machine to run on
-    bank: guest # bank
-    queue: pbatch # partition
+    bank: guests # bank
+    queue: pdebug # partition
 
 study:
     - name: amdahl
@@ -169,7 +257,7 @@ study:
                $(LAUNCHER) amdahl >> amdahl.out
           nodes: 2
           procs: 2
-          walltime: "00:01:30"
+          walltime: "00:00:30"
 ```
 
 Your output file `Amdahl_.../amdahl/amdahl.out` should include
@@ -184,9 +272,10 @@ script `Amdahl_.../amdahl/amdahl.slurm.sh` should include the line
 ::: callout
 ## Commenting Maestro YAML files
 
-In the solution from the last challenge, the line beginning `#` is a comment line. Hopefully 
-you are already in the habit of adding comments to your own scripts. Good comments make any
-script more readable, and this is just as true with our YAML files.
+In the solution from the last challenge, the line beginning `#` is a comment
+line. Hopefully you are already in the habit of adding comments to your own
+scripts. Good comments make any script more readable, and this is just as
+true with our YAML files.
 
 :::
 
@@ -215,7 +304,7 @@ options:
 ```
 The option we are looking for is `--terse`, and that will make `amdahl` print
 output in a format that is much easier to process, JSON. JSON format in a file
-typically uses the file extension `.json` so let's add that option to our 
+typically uses the file extension `.json` so let's add that option to our
 `shell` command _and_ change the file format of the `output` to match our new
 command:
 
@@ -227,8 +316,8 @@ description:
 batch:
     type: slurm
     host: quartz # machine to run on
-    bank: guest # bank
-    queue: pbatch # partition
+    bank: guests # bank
+    queue: pdebug # partition
 
 study:
     - name: amdahl
@@ -244,7 +333,7 @@ study:
 
 There was another parameter for `amdahl` that caught my eye. `amdahl` has an
 option `--parallel-proportion` (or `-p`) which we might be interested in
-changing as it changes the behaviour of the code,and therefore has an impact on
+changing as it changes the behaviour of the code, and therefore has an impact on
 the values we get in our results. Let's try specifying a parallel proportion
 of 90%:
 
@@ -256,8 +345,8 @@ description:
 batch:
     type: slurm
     host: quartz # machine to run on
-    bank: guest # bank
-    queue: pbatch # partition
+    bank: guests # bank
+    queue: pdebug # partition
 
 study:
     - name: amdahl
@@ -268,12 +357,47 @@ study:
                $(LAUNCHER) amdahl --terse -p .9 >> amdahl.json
           nodes: 2
           procs: 2
-          walltime: "00:01:30"
+          walltime: "00:00:30"
 ```
 
+::: challenge
+
+Create a YAML file for a value of `-p` of 0.999 (the default value is 0.8)
+for the case where we have a single node and 6 parallel processes.
+
+:::::: solution
+
+```yml
+description:
+    name: Amdahl
+    description: Run a parallel program
+
+batch:
+    type: slurm
+    host: quartz # machine to run on
+    bank: guests # bank
+    queue: pdebug # partition
+
+study:
+    - name: amdahl
+      description: run in parallel
+      run:
+          # Here's where we include our MPI wrapper:
+          cmd: |
+               $(LAUNCHER) amdahl --terse -p .999 >> amdahl.json
+          nodes: 1
+          procs: 6
+          walltime: "00:00:30"
+```
+
+::::::
+:::
+
+## Environment variables
+
 Our current directory is probably starting to fill up with directories
-starting with `Amdahl_...`, distinguished only by dates and timestamps. 
-It's probably best to group runs into separate folders to keep things tidy. 
+starting with `Amdahl_...`, distinguished only by dates and timestamps.
+It's probably best to group runs into separate folders to keep things tidy.
 One way we can do this is by specifying an `env` section in our YAML
 file with a variable called `OUTPUT_PATH` specified in this format:
 
@@ -283,16 +407,14 @@ env:
       OUTPUT_PATH: ./Episode3
 ```
 
-This `env` block goes above our `study` block. In this case, directories
-created by runs using this `OUTPUT_PATH` will all be grouped inside the
-directory `Episode3`, to help us group runs by where we are in the lesson.
+This `env` block goes above our `study` block; `env` is at the same level
+of indentation as `study`. In this case, directories created by runs using
+this `OUTPUT_PATH` will all be grouped inside the directory `Episode3`, to help us group runs by where we are in the lesson.
 
 
 ::: challenge
 
-Create a YAML file for a value of `-p` of 0.999 (the default value is 0.8)
-for the case where we have a single node and 6 parallel processes. 
-Directories for subsequent runs should be grouped into a shared parent
+Modify your YAML so that subsequent runs will be grouped into a shared parent
 directory (for example, `Episode3`, as above).
 
 :::::: solution
@@ -305,8 +427,8 @@ description:
 batch:
     type: slurm
     host: quartz # machine to run on
-    bank: guest # bank
-    queue: pbatch # partition
+    bank: guests # bank
+    queue: pdebug # partition
 
 env:
     variables:
@@ -321,7 +443,7 @@ study:
                $(LAUNCHER) amdahl --terse -p .999 >> amdahl.json
           nodes: 1
           procs: 6
-          walltime: "00:01:30"
+          walltime: "00:00:30"
 ```
 
 ::::::
@@ -336,7 +458,7 @@ if you run `maestro run --help`.
 ::: challenge
 
 Do a dry-run using the script created in the last challenge. This should help you
-verify that a new directory gets created for runs from this episode.
+verify that a new directory "Episode3" gets created for runs from this episode.
 
 :::::: solution
 

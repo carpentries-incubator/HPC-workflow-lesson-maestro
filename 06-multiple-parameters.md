@@ -79,8 +79,8 @@ description:
 batch:
     type: slurm
     host: quartz # machine to run on
-    bank: guest # bank
-    queue: pbatch # partition
+    bank: guests # bank
+    queue: pdebug # partition
 
 env:
     variables:
@@ -183,7 +183,7 @@ This would allow `plot` to terminate happily and to produce
 an `output.jpg` file, but that image would plot output from
 all `.json` files as a single line, and we wouldn't be able
 to tell which data points corresponded to a parallel fraction,
-`P`, of `.85` and which corresponded to `P=.99`. 
+`P`, of `.85` and which corresponded to `P=.99`.
 
 If we can generate two plots -- one for each value of `P`
 -- we'll more clearly be able to see scaling behavior for
@@ -234,8 +234,8 @@ description:
 batch:
     type: slurm
     host: quartz # machine to run on
-    bank: guest # bank
-    queue: pbatch # partition
+    bank: guests # bank
+    queue: pdebug # partition
 
 env:
     variables:
@@ -299,4 +299,3 @@ in Maestro.
 length; the Nth entries in the lists of values for all global
 parameters are used in a single job."
 :::
-

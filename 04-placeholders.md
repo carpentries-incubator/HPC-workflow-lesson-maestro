@@ -125,7 +125,7 @@ changes as we use more processors in the job. One way to do this would be to upd
 and to manually re-run `maestro run...` several times with different numbers of processes.
 
 An alternative is to avoid repeating ourselves by defining a **parameter** that lists multiple
-values of tasks and runs a separate job for each value. We do this by adding a 
+values of tasks and runs a separate job for each value. We do this by adding a
 `global.parameters` section at the bottom of the script. We then list individual parameters
 within this section. Each parameter must include a list of its values and a label, using the
 following syntax:
@@ -139,7 +139,7 @@ global.parameters:
 ```
 
 Note that the parameter is `TASKS` and that its label starts with the same name, but is followed
-by a `.%%`. 
+by a `.%%`.
 
 We would then update the line under `run` -> `cmd` defining `procs` to include the name
 of the parameter enclosed in `$()`:
@@ -158,8 +158,8 @@ description:
 batch:
     type: slurm
     host: quartz # machine to run on
-    bank: guest # bank
-    queue: pbatch # partition
+    bank: guests # bank
+    queue: pdebug # partition
 
 env:
     variables:
@@ -206,7 +206,7 @@ TASKS.18  TASKS.2  TASKS.24  TASKS.36  TASKS.4  TASKS.8
 ```
 
 Each `TASKS...` subdirectory will contain the slurm submission script
-to be used if this maestro job is run: 
+to be used if this maestro job is run:
 
 ```bash
 (...)Episode4/Amdahl_<Date>_<Time>/amdahl$ ls TASKS.18/
