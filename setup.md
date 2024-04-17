@@ -2,7 +2,7 @@
 title: Setup
 ---
 
-This tutorial assumes you have access to the LC system `Quartz` (though many examples will reference the system `Pascal`, which overs an identical environment).
+This tutorial assumes you have access to the LC system `Quartz` (though many examples will reference the system `Pascal`, which offers an identical environment).
 
 If you do not have access to LC systems, you will need to install the prerequisites yourself.
 

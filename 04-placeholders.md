@@ -36,7 +36,13 @@ ourselves by using *environment variables* as *placeholders*.
 
 ## Placeholders
 
-At the end of our last episode, our YAML file contained the sections
+Over the course of this lesson, we want to use the `amdahl` binary to
+show how the execution time of a program changes with the number of
+processes used. In on our current setup, to run amdahl for multiple
+values of `procs`, we would need to run our workflow, change `procs`,
+rerun, and so forth. We'd be repeating our workflow a lot, so let's first try fixing that by defining multiple rules.
+
+At the end of our last episode, our `amdahl.yaml` file contained the sections
 
 ```yml
 (...)
@@ -53,19 +59,64 @@ study:
           cmd: |
                $(LAUNCHER) amdahl --terse -p .999 >> amdahl.json
           nodes: 1
-          procs: 6
-          walltime: "00:01:30"
+          procs: 4
+          walltime: "00:00:30"
 ```
 
-Here we were already using a placeholder -- `$(LAUNCHER)` -- which held
-the place and was later swapped out for a call to `srun` specifying
-the nodes and tasks wanted.
+Let's call our existing step `amdahl-1` (`name` under `study`) and create a second step called `amdahl-2` which is exactly the same, except that it will define `procs: 8`. While we're at it, let's update `OUTPUT_PATH` so that it is `./Episode4`.
+
+The updated part of the script now looks like
+
+```yml
+(...)
+
+env:
+    variables:
+      OUTPUT_PATH: ./Episode4
+
+study:
+    - name: amdahl-1
+      description: run in parallel
+      run:
+          cmd: |
+               $(LAUNCHER) amdahl --terse -p .999 >> amdahl.json
+          nodes: 1
+          procs: 4
+          walltime: "00:00:30"
+    - name: amdahl-2
+    description: run in parallel
+    run:
+        cmd: |
+             $(LAUNCHER) amdahl --terse -p .999 >> amdahl.json
+        nodes: 1
+        procs: 8
+        walltime: "00:00:30"
+```
+
+::: challenge
+
+Update `amdahl.yaml` to include the new info shown above. Run a dry run
+to see what your output directory structure looks like.
+
+:::
+
+Now let's start to get rid of some of the redundancy in our new
+workflow.
+
+First off, defining the parallel proportion (`-p .999`) in two places
+makes our lives harder. Now if we want to change this value, we have to
+update it in two places, but we can make this easier by using an
+environment variable.
 
 Let's create another environment variable in the `variables` second under
 `env`. We can define a new parallel proportion as `P: .999`. Then, under
-`run`'s `cmd`, we can call this environment variable with the syntax
-`$(P)`. `$(P)` holds the place of and will be substituted by `.999` when
-Maestro creates a Slurm submission script for us
+`run`'s `cmd` for each step, we can call this environment variable with the
+syntax `$(P)`. `$(P)` holds the place of and will be substituted by `.999`
+when Maestro creates a Slurm submission script for us.
+
+Let's also create an environment variable for our output file, `amdahl.json` called `OUTPUT` and then call that variable from our `cmd` fields.
+
+Our updated section will now look like this:
 
 ```yml
 (...)
@@ -74,62 +125,96 @@ env:
     variables:
       P: .999
       OUTPUT_PATH: ./Episode4
-
-study:
-    - name: amdahl
-      description: run in parallel
-      run:
-          # Here's where we include our MPI wrapper:
-          cmd: |
-               $(LAUNCHER) amdahl --terse -p $(P) >> amdahl.json
-          nodes: 1
-          procs: 6
-          walltime: "00:01:30"
-```
-
-(Note that the `OUTPUT_PATH` was also updated to reflect the current
-episode.)
-
-It may also be helpful to create a variable for our output file, like this:
-
-```yml
-(...)
-
-env:
-    variables:
-      P: .999
       OUTPUT: amdahl.json
-      OUTPUT_PATH: ./Episode4
 
 study:
-    - name: amdahl
-      description: run in parallel
-      run:
-          # Here's where we include our MPI wrapper:
-          cmd: |
-               $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
-          nodes: 1
-          procs: 6
-          walltime: "00:01:30"
+  - name: amdahl-1
+    description: run in parallel
+    run:
+        cmd: |
+             $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
+        nodes: 1
+        procs: 4
+        walltime: "00:00:30"
+  - name: amdahl-2
+  description: run in parallel
+  run:
+      cmd: |
+           $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
+      nodes: 1
+      procs: 8
+      walltime: "00:00:30"
 ```
+
+We've added two new placeholders to make our YAML script to make it a tad
+bit more efficient. Note that we had already been using a placeholder given to
+us by Maestro: $(LAUNCHER) holds the place of a call to
+`srun <insert resource requests>`
+
+
+::: challenge
+
+Run your updated `amdahl.yaml` and check results, to verify your workflow is
+working with the changes you've made so far.
+
+::::::solution
+
+The full YAML text is
+```yml
+description:
+    name: Amdahl
+    description: Run a parallel program
+
+batch:
+    type: slurm
+    host: quartz # machine to run on
+    bank: guests # bank
+    queue: pdebug # partition
+
+env:
+    variables:
+      P: .999
+      OUTPUT_PATH: ./Episode4
+      OUTPUT: amdahl.json
+
+study:
+  - name: amdahl-1
+    description: run in parallel
+    run:
+        cmd: |
+             $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
+        nodes: 1
+        procs: 4
+        walltime: "00:00:30"
+  - name: amdahl-2
+  description: run in parallel
+  run:
+      cmd: |
+           $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
+      nodes: 1
+      procs: 8
+      walltime: "00:00:30"
+```
+
+::::::
+:::
 
 ## Maestro's global.parameters
 
-We're almost ready to perform our scaling study -- to see how the amount of work per processor
-changes as we use more processors in the job. One way to do this would be to update the line
+We're almost ready to perform our scaling study -- to see how the execution time
+changes as we use more processors in the job. Unfortunately, we're still
+repeating ourselves a lot because, in spite of the environment variables
+we created, most of the information defined for steps `amdahl-1` and `amdahl-2`
+is the same. Only the `procs` field changes!
 
-```yml
-          procs: 6
-```
+A great way to avoid repeating ourselves here by defining a **parameter** that
+lists multiple values of tasks and runs a separate job step for each value. We do
+this by adding a `global.parameters` section at the bottom of the script. We
+then define individual parameters within this section. Each parameter includes
+a list of `values` (Each element is used in its own job step.) and a `label`.
+(The `label` helps define how the output directory structure is named.)
 
-and to manually re-run `maestro run...` several times with different numbers of processes.
-
-An alternative is to avoid repeating ourselves by defining a **parameter** that lists multiple
-values of tasks and runs a separate job for each value. We do this by adding a
-`global.parameters` section at the bottom of the script. We then list individual parameters
-within this section. Each parameter must include a list of its values and a label, using the
-following syntax:
-
+This is what it looks like to define a global parameter:
 
 ```yml
 global.parameters:
@@ -138,15 +223,20 @@ global.parameters:
         label: TASKS.%%
 ```
 
-Note that the parameter is `TASKS` and that its label starts with the same name, but is followed
-by a `.%%`.
+Note that the label should include `%%` as above; the `%%` is itself a placeholder!
+The directory created for the output of each job step will be identified by the
+value of each parameter it used, and the parameter's value will be inserted to
+replace the `%%`.
 
-We would then update the line under `run` -> `cmd` defining `procs` to include the name
+Next, we should update the line under `run` -> `cmd` defining `procs` to include the name
 of the parameter enclosed in `$()`:
 
 ```yml
           procs: $(TASKS)
 ```
+
+If we make this change for steps `amdahl-1` *and* `amdahl-2`, they will now
+look *exactly* the same, so we can simply condense them to one step.
 
 The full YAML file will look like
 
@@ -176,7 +266,7 @@ study:
                $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
           nodes: 1
           procs: $(TASKS)
-          walltime: "00:01:30"
+          walltime: "00:00:30"
 
 global.parameters:
     TASKS:
@@ -230,6 +320,4 @@ see your jobs queueing and running via `squeue -u <username>`.
 :::keypoints
 - "Environment variables are placeholders defined under the `env` section of a Maestro YAML."
 - "Parameters defined under `global.parameters` require lists of values and labels."
-- "Parameters "
-
 :::

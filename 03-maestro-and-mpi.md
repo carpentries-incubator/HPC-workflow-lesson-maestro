@@ -363,7 +363,7 @@ study:
 ::: challenge
 
 Create a YAML file for a value of `-p` of 0.999 (the default value is 0.8)
-for the case where we have a single node and 6 parallel processes.
+for the case where we have a single node and 4 parallel processes.
 
 :::::: solution
 
@@ -386,7 +386,7 @@ study:
           cmd: |
                $(LAUNCHER) amdahl --terse -p .999 >> amdahl.json
           nodes: 1
-          procs: 6
+          procs: 4
           walltime: "00:00:30"
 ```
 
@@ -442,7 +442,7 @@ study:
           cmd: |
                $(LAUNCHER) amdahl --terse -p .999 >> amdahl.json
           nodes: 1
-          procs: 6
+          procs: 4
           walltime: "00:00:30"
 ```
 

@@ -210,7 +210,7 @@ study:
                $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
           nodes: 1
           procs: $(TASKS)
-          walltime: "00:01:30"
+          walltime: "00:00:30"
 
 global.parameters:
     TASKS:
@@ -259,6 +259,29 @@ Now our new step definition will look like
                echo "This is where we plot"
           depends: [amdahl_*]
 ```
+
+::: challenge
+
+Experiment with defining your dependency as both
+
+```
+depends: [amdahl_*]
+```
+
+and
+
+```
+depends: [amdahl]
+```
+
+in different **dry** runs. How do the output directory structures differ?
+What's the difference in behavior?
+
+:::::: solution
+
+
+::::::
+:::
 
 ## Using the outputs from a previous step
 
