@@ -273,7 +273,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Multiple parameters</h1>
-        <p>Last updated on 2024-04-16 |
+        <p>Last updated on 2024-04-29 |
         
         <a href="https://github.com/carpentries-incubator/hpc-workflows/edit/main/episodes/06-multiple-parameters.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
         
@@ -340,9 +340,9 @@ entry under <code>global.parameters</code> and remove the definition for
 <p>How many values do we want to include for <code>P</code>? We need to
 have <strong>the same number</strong> of values listed for all
 <code>global.parameters</code>. This means that to run the previous
-scaling study with <code>P=.85</code>, and five values for
+scaling study with <code>P=.5</code>, and five values for
 <code>TASKS</code>, our global parameters section would specify
-<code>.85</code> for <code>P</code> five times:</p>
+<code>.5</code> for <code>P</code> five times:</p>
 <div class="codewrapper sourceCode" id="cb2">
 <h3 class="code-label">YML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
@@ -351,7 +351,7 @@ scaling study with <code>P=.85</code>, and five values for
 <span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="at">        </span><span class="fu">values</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">]</span></span>
 <span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> TASKS.%%</span></span>
 <span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="at">    </span><span class="fu">P</span><span class="kw">:</span></span>
-<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="at">        </span><span class="fu">values</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">]</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="at">        </span><span class="fu">values</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">]</span></span>
 <span id="cb2-7"><a href="#cb2-7" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> P.%%</span></span></code></pre>
 </div>
 <p>Let’s say we want to perform the same scaling study for a second
@@ -366,7 +366,7 @@ of <code>P</code> 5 times:</p>
 <span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="at">        </span><span class="fu">values</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">,</span><span class="at"> </span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">]</span></span>
 <span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> TASKS.%%</span></span>
 <span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="at">    </span><span class="fu">P</span><span class="kw">:</span></span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="at">        </span><span class="fu">values</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">]</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="at">        </span><span class="fu">values</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">]</span></span>
 <span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> P.%%</span></span></code></pre>
 </div>
 <p>At this point, our entire YAML file should look something like</p>
@@ -410,7 +410,7 @@ of <code>P</code> 5 times:</p>
 <span id="cb4-35"><a href="#cb4-35" tabindex="-1"></a><span class="at">        </span><span class="fu">values</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">,</span><span class="at"> </span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">]</span></span>
 <span id="cb4-36"><a href="#cb4-36" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> TASKS.%%</span></span>
 <span id="cb4-37"><a href="#cb4-37" tabindex="-1"></a><span class="at">    P:</span></span>
-<span id="cb4-38"><a href="#cb4-38" tabindex="-1"></a><span class="at">        values: [.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">]</span></span>
+<span id="cb4-38"><a href="#cb4-38" tabindex="-1"></a><span class="at">        values: [.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">]</span></span>
 <span id="cb4-39"><a href="#cb4-39" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> P.%%</span></span></code></pre>
 </div>
 <div id="challenge1" class="callout challenge">
@@ -459,10 +459,10 @@ update the directory path specified under <code>plot</code>.</p>
 YAML), its subdirectory names now include information about both global
 parameters:</p>
 <pre><code>janeh@pascal83:~/Episode6/Amdahl_20240328-163359/run-amdahl$ ls
-P.0.85.TASKS.16  P.0.85.TASKS.8   P.0.99.TASKS.4
-P.0.85.TASKS.2   P.0.99.TASKS.16  P.0.99.TASKS.8
-P.0.85.TASKS.32  P.0.99.TASKS.2
-P.0.85.TASKS.4   P.0.99.TASKS.32</code></pre>
+P.0.5.TASKS.16  P.0.5.TASKS.8   P.0.99.TASKS.4
+P.0.5.TASKS.2   P.0.99.TASKS.16  P.0.99.TASKS.8
+P.0.5.TASKS.32  P.0.99.TASKS.2
+P.0.5.TASKS.4   P.0.99.TASKS.32</code></pre>
 <p>whereas directory path for our <code>.json</code> files is specified
 as <code>$(run-amdahl.workspace)/TASKS.*/amdahl.json</code> under the
 <code>plot</code> step.</p>
@@ -487,7 +487,7 @@ fraction, <code>P</code>, of <code>.85</code> and which corresponded to
 we’ll more clearly be able to see scaling behavior for these two
 situations. We can generate two separate plots by calling
 <code>python3 plot_terse_amdahl_results.py ...</code> on two sets of
-input files – those in the <code>P.0.85.TASKS*</code> subdirectories of
+input files – those in the <code>P.0.5.TASKS*</code> subdirectories of
 <code>$(run-amdahl.workspace)</code> and those in the
 <code>P.0.99.TASKS*</code> subdirectories.</p>
 <p>That means we can generate these two plots by inserting the variable
@@ -512,7 +512,7 @@ input files – those in the <code>P.0.85.TASKS*</code> subdirectories of
 two different values of P. Open these plots and verify they are
 different from each other. How does changing the workflow to generate
 two separate plots change the directory structure?</p>
-<p>(Feel free to use .85 and .99 or to modify to other values of your
+<p>(Feel free to use .5 and .99 or to modify to other values of your
 choosing.)</p>
 </div>
 </div>
@@ -565,14 +565,14 @@ choosing.)</p>
 <span id="cb11-35"><a href="#cb11-35" tabindex="-1"></a><span class="at">        </span><span class="fu">values</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">,</span><span class="at"> </span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">]</span></span>
 <span id="cb11-36"><a href="#cb11-36" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> TASKS.%%</span></span>
 <span id="cb11-37"><a href="#cb11-37" tabindex="-1"></a><span class="at">    P:</span></span>
-<span id="cb11-38"><a href="#cb11-38" tabindex="-1"></a><span class="at">        values: [.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.85</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">]</span></span>
+<span id="cb11-38"><a href="#cb11-38" tabindex="-1"></a><span class="at">        values: [.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">]</span></span>
 <span id="cb11-39"><a href="#cb11-39" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> P.%%</span></span></code></pre>
 </div>
 <p>Modifying <code>plot</code> to include <code>$(P)</code> caused this
 step to run twice. As a result, two subdirectories under
 <code>plot</code> were created – one for each value of P:</p>
 <pre><code>(maestro_venv) janeh@pascal83:~/Episode6/Amdahl_20240328-171343/plot$ ls
-P.0.85  P.0.99</code></pre>
+P.0.5  P.0.99</code></pre>
 </div>
 </div>
 </div>
@@ -675,8 +675,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/hpc-workflows/instructor/06-multiple-parameters.html",
   "identifier": "https://carpentries-incubator.github.io/hpc-workflows/instructor/06-multiple-parameters.html",
   "dateCreated": "2024-04-02",
-  "dateModified": "2024-04-16",
-  "datePublished": "2024-04-23"
+  "dateModified": "2024-04-29",
+  "datePublished": "2024-04-29"
 }
 
   </script><script>
