@@ -84,13 +84,13 @@ study:
           procs: 4
           walltime: "00:00:30"
     - name: amdahl-2
-    description: run in parallel
-    run:
-        cmd: |
-             $(LAUNCHER) amdahl --terse -p .999 >> amdahl.json
-        nodes: 1
-        procs: 8
-        walltime: "00:00:30"
+      description: run in parallel
+      run:
+          cmd: |
+               $(LAUNCHER) amdahl --terse -p .999 >> amdahl.json
+          nodes: 1
+          procs: 8
+          walltime: "00:00:30"
 ```
 
 ::: challenge
@@ -128,22 +128,22 @@ env:
       OUTPUT: amdahl.json
 
 study:
-  - name: amdahl-1
-    description: run in parallel
-    run:
-        cmd: |
-             $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
-        nodes: 1
-        procs: 4
-        walltime: "00:00:30"
-  - name: amdahl-2
-  description: run in parallel
-  run:
-      cmd: |
-           $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
-      nodes: 1
-      procs: 8
-      walltime: "00:00:30"
+    - name: amdahl-1
+      description: run in parallel
+      run:
+          cmd: |
+               $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
+          nodes: 1
+          procs: 4
+          walltime: "00:00:30"
+    - name: amdahl-2
+      description: run in parallel
+      run:
+          cmd: |
+               $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
+          nodes: 1
+          procs: 8
+          walltime: "00:00:30"
 ```
 
 We've added two new placeholders to make our YAML script to make it a tad
@@ -178,22 +178,22 @@ env:
       OUTPUT: amdahl.json
 
 study:
-  - name: amdahl-1
-    description: run in parallel
-    run:
-        cmd: |
-             $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
-        nodes: 1
-        procs: 4
-        walltime: "00:00:30"
-  - name: amdahl-2
-  description: run in parallel
-  run:
-      cmd: |
-           $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
-      nodes: 1
-      procs: 8
-      walltime: "00:00:30"
+    - name: amdahl-1
+      description: run in parallel
+      run:
+          cmd: |
+               $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
+          nodes: 1
+          procs: 4
+          walltime: "00:00:30"
+    - name: amdahl-2
+      description: run in parallel
+      run:
+          cmd: |
+               $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
+          nodes: 1
+          procs: 8
+          walltime: "00:00:30"
 ```
 
 ::::::

@@ -40,9 +40,9 @@ global.parameters:
 
 How many values do we want to include for `P`? We need to have
 **the same number** of values listed for all `global.parameters`.
-This means that to run the previous scaling study with `P=.85`,
+This means that to run the previous scaling study with `P=.5`,
 and five values for `TASKS`, our global parameters section would
-specify `.85` for `P` five times:
+specify `.5` for `P` five times:
 
 ```yml
 global.parameters:
@@ -50,7 +50,7 @@ global.parameters:
         values: [2, 4, 8, 16, 32]
         label: TASKS.%%
     P:
-        values: [.85, .85, .85, .85, .85]
+        values: [.5, .5, .5, .5, .5]
         label: P.%%
 ```
 
@@ -65,7 +65,7 @@ global.parameters:
         values: [2, 4, 8, 16, 32, 2, 4, 8, 16, 32]
         label: TASKS.%%
     P:
-        values: [.85, .85, .85, .85, .85, .99, .99, .99, .99, .99]
+        values: [.5, .5, .5, .5, .5, .99, .99, .99, .99, .99]
         label: P.%%
 ```
 
@@ -109,7 +109,7 @@ global.parameters:
         values: [2, 4, 8, 16, 32, 2, 4, 8, 16, 32]
         label: TASKS.%%
     P:
-        values: [.85, .85, .85, .85, .85, .99, .99, .99, .99, .99]
+        values: [.5, .5, .5, .5, .5, .99, .99, .99, .99, .99]
         label: P.%%
 ```
 
@@ -150,10 +150,10 @@ global parameters:
 
 ```
 janeh@pascal83:~/Episode6/Amdahl_20240328-163359/run-amdahl$ ls
-P.0.85.TASKS.16  P.0.85.TASKS.8   P.0.99.TASKS.4
-P.0.85.TASKS.2   P.0.99.TASKS.16  P.0.99.TASKS.8
-P.0.85.TASKS.32  P.0.99.TASKS.2
-P.0.85.TASKS.4   P.0.99.TASKS.32
+P.0.5.TASKS.16  P.0.5.TASKS.8   P.0.99.TASKS.4
+P.0.5.TASKS.2   P.0.99.TASKS.16  P.0.99.TASKS.8
+P.0.5.TASKS.32  P.0.99.TASKS.2
+P.0.5.TASKS.4   P.0.99.TASKS.32
 ```
 
 whereas directory path for our `.json` files is specified
@@ -189,7 +189,7 @@ If we can generate two plots -- one for each value of `P`
 -- we'll more clearly be able to see scaling behavior for
 these two situations. We can generate two separate plots
 by calling `python3 plot_terse_amdahl_results.py ...` on
-two sets of input files -- those in the `P.0.85.TASKS*`
+two sets of input files -- those in the `P.0.5.TASKS*`
 subdirectories of `$(run-amdahl.workspace)` and those
 in the `P.0.99.TASKS*` subdirectories.
 
@@ -219,7 +219,7 @@ plots and verify they are different from each other.
 How does changing the workflow to generate two separate
 plots change the directory structure?
 
-(Feel free to use .85 and .99 or to modify to
+(Feel free to use .5 and .99 or to modify to
 other values of your choosing.)
 
 :::::: solution
@@ -264,7 +264,7 @@ global.parameters:
         values: [2, 4, 8, 16, 32, 2, 4, 8, 16, 32]
         label: TASKS.%%
     P:
-        values: [.85, .85, .85, .85, .85, .99, .99, .99, .99, .99]
+        values: [.5, .5, .5, .5, .5, .99, .99, .99, .99, .99]
         label: P.%%
 ```
 
@@ -274,7 +274,7 @@ one for each value of P:
 
 ```
 (maestro_venv) janeh@pascal83:~/Episode6/Amdahl_20240328-171343/plot$ ls
-P.0.85  P.0.99
+P.0.5  P.0.99
 ```
 ::::::
 :::

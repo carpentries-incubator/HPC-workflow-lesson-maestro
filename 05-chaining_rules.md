@@ -48,7 +48,15 @@ env:
       OUTPUT: date.txt
 
 study:
-    - name: date-batch
+      - name: date-login
+      description: Write the date and login node's hostname to a file
+      run:
+          cmd: |
+              echo "From login node:" >> $(OUTPUT)
+              hostname >> $(OUTPUT)
+              date >> $(OUTPUT)
+              sleep 10
+      - name: date-batch
       description: Write the date and node's hostname to a file
       run:
           cmd: |
@@ -59,14 +67,6 @@ study:
           nodes: 1
           procs: 1
           walltime: "00:00:30"
-    - name: date-login
-      description: Write the date and login node's hostname to a file
-      run:
-          cmd: |
-              echo "From login node:" >> $(OUTPUT)
-              hostname >> $(OUTPUT)
-              date >> $(OUTPUT)
-              sleep 10
 ```
 
 This script has two steps, each of which writes the type of
@@ -154,7 +154,7 @@ Now `date-login` will not run until `date-batch` has finished.
 ::: challenge
 
 Update `depends.yaml` to make `date-login` wait for `date-batch`
-to complete before running. Then rerun `maestro run depends,yaml`.
+to complete before running. Then rerun `maestro run depends.yaml`.
 
 How has the output of the two `date.txt` files changed?
 
@@ -177,6 +177,21 @@ pascal83
 Tue Mar 26 15:10:53 PDT 2024
 ```
 ::::::
+:::
+
+::: callout
+
+Slurm can also be used to define dependencies. How is
+using Maestro to define the order of our steps any different?
+
+One difference is that we can use Maestro to order steps
+**that are not seen by Slurm**. Above, `date-login` was run
+on the login node. It wasn't submitted to the queue, and
+Slurm never saw that step. (It wasn't given a Slurm job ID,
+for example.) Maestro can control the order of steps running
+both in and outside the batch queue, whereas Slurm can only
+enforce dependencies between Slurm-scheduled jobs.
+
 :::
 
 ## A step that waits for all iterations of its dependency
@@ -223,7 +238,7 @@ Ultimately we want to add a plotting step that depends upon
 go under `study` and beneath `amdahl`:
 
 ```
-   - name: plot
+    - name: plot
       description: Create a plot from `amdahl` results
       run:
           # We'll update this `cmd` later
@@ -238,9 +253,114 @@ need to add
           depends: [amdahl]
 ```
 
-to the end of this block. Instead, the syntax changes
-slightly because `amdahl` is parameterized -- i.e. it will
-run for several task values. To indicate that we want `plot`
+to the end of this block. Let's try this to see what happens.
+
+::: challenge
+
+Add the `plot` step
+
+```
+    - name: plot
+      description: Create a plot from `amdahl` results
+      run:
+          # We'll update this `cmd` later
+          cmd: |
+               echo "This is where we plot"
+
+          depends: [amdahl]
+```
+
+to your `amdahl.yaml`. Then perform a dry run via
+
+```
+maestro run --dry amdahl.yaml
+``` 
+
+What does the directory structure look like for your `plot` step?
+
+:::::: solution
+
+Doing a dry run with `amdahl.yaml` (text below) should generate
+an 'Amdahl_{Date & time stamp}'' directory with a subdirectory for
+the `plot` step. Within the 'plot' subdirectory, there will be
+several 'TASKS.%%' subdirectories -- one for each of the values of
+`TASKS` defined under `global.parameters` in `amdahl.yaml`. For example,
+
+```
+$ pwd
+~/Episode5/Amdahl_20240429-153515
+$ ls
+amdahl      Amdahl.study.pkl  batch.info  meta                plot
+Amdahl.pkl  Amdahl.txt        logs        pascal-amdahl.yaml  status.csv
+$ ls plot/
+TASKS.18  TASKS.2  TASKS.24  TASKS.36  TASKS.4  TASKS.8
+$ ls TASKS.18/*
+TASKS.18/plot_TASKS.18.slurm.sh
+```
+
+Each of these 'TASKS.%%' subdirectories --- such as 'plot/TASKS.18' ---
+represents a separate workflow step that is related to its corresponding
+'amdahl/TASKS.%%' workflow step and directory.
+
+The text of the yaml used is below.
+
+```yml
+
+description:
+    name: Amdahl
+    description: Run a parallel program
+
+batch:
+    type: slurm
+    host: pascal # machine to run on
+    bank: lc #bank
+    queue: pvis # partition
+
+env:
+    variables:
+      P: .999
+      OUTPUT: amdahl.json
+      OUTPUT_PATH: ./Episode5
+
+study:
+    - name: amdahl
+      description: run in parallel
+      run:
+          # Here's where we include our MPI wrapper:
+          cmd: |
+               $(LAUNCHER) amdahl --terse -p $(P) >> $(OUTPUT)
+          nodes: 1
+          procs: $(TASKS)
+          walltime: "00:00:30"
+    - name: plot
+      description: Create a plot from `amdahl` results
+      run:
+          # We'll update this `cmd` later
+          cmd: |
+               echo "This is where we plot"
+          depends: [amdahl]
+global.parameters:
+    TASKS:
+        values: [2, 4, 8, 18, 24, 36]
+        label: TASKS.%%
+```
+
+::::::
+:::
+
+The takeaway from the above challenge is that, a step 
+depending upon a parameterized step will become parameterized
+by default. In this case, creating a plotting step that depends
+on the `amdahl` step will lead to a series of plots, each of 
+which will use data only from a single run of `amdahl`.
+
+This is not what we want! Instead, we want to generate a plot
+that uses data from several runs of `amdahl` --- each of which
+will use a different number of tasks. This means that `plot`
+cannot run until all runs of `amdahl` have completed.
+
+So, the syntax for defining dependency will change when
+parameterized steps are involved. To indicate that we want `plot`
 to run after *ALL* `amdahl` steps, we'll add a `_*` to the
 end of the step name:
 
@@ -251,7 +371,7 @@ end of the step name:
 Now our new step definition will look like
 
 ```yml
-   - name: plot
+    - name: plot
       description: Create a plot from `amdahl` results
       run:
           # We'll update this `cmd` later
@@ -262,23 +382,24 @@ Now our new step definition will look like
 
 ::: challenge
 
-Experiment with defining your dependency as both
-
-```
-depends: [amdahl_*]
-```
-
-and
-
-```
-depends: [amdahl]
-```
-
-in different **dry** runs. How do the output directory structures differ?
-What's the difference in behavior?
+Update your `amdahl.yaml` so that `plot` runs after
+`amdahl` has run with all values of `TASKS`. Perform
+a dry run to verify that `plot` will run only once.
 
 :::::: solution
 
+Your new directory structure should look something like
+
+```
+$ ls Episode5/Amdahl_20240429-161330
+amdahl      Amdahl.study.pkl  batch.info  meta                plot
+Amdahl.pkl  Amdahl.txt        logs        pascal-amdahl.yaml  status.csv
+$ ls plot
+plot.slurm.sh
+```
+
+In other words, the directory `plot` will have no
+subdirectories.
 
 ::::::
 :::
@@ -344,7 +465,7 @@ rather than a placeholder `echo` command. We want the updated step to look
 something like
 
 ```yml
-   - name: plot
+    - name: plot
       description: Create a plot from `amdahl` results
       run:
           cmd: |
@@ -362,7 +483,7 @@ directories, are written.
 This means we can update the `plot` step as follows:
 
 ```yml
-   - name: plot
+    - name: plot
       description: Create a plot from `amdahl` results
       run:
           cmd: |
@@ -378,7 +499,7 @@ ran `maestro run...`. This is where `plot_terse_amdahl_results.py` should
 live, so let's be more precise:
 
 ```yml
-   - name: plot
+    - name: plot
       description: Create a plot from `amdahl` results
       run:
           cmd: |
@@ -392,7 +513,7 @@ live, so let's be more precise:
 
 Update `amdahl.yaml` so that
 
-* one step definiton runs `amdahl` for 85% parallelizable code using [2, 4, 8, 16, 32] tasks
+* one step definiton runs `amdahl` for 50% parallelizable code using [2, 4, 8, 16, 32] tasks
 * a second step plots the results.
 
 ::::::solution
@@ -412,7 +533,7 @@ batch:
 
 env:
     variables:
-      P: .85
+      P: .5
       OUTPUT: amdahl.json
       OUTPUT_PATH: ./Episode5
 

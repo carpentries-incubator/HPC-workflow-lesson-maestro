@@ -192,11 +192,16 @@ Total execution time (according to rank 0): 27.755552 seconds
 
 Notice that this output refers to only "1 processor" and mentions
 only one process. We requested two processes, but only a single one
-reports back!
+reports back! Additionally, we requested two *nodes*, but only one
+is mentioned in the above output (`pascal17`).
 
 So what's going on? If your job were really *using* both tasks
-that were assigned to it, then both would have written
+and nodes that were assigned to it, then both would have written
 to `amdahl.out`.
+
+The `amdahl` binary is enabled to run in parallel but it's also able
+to run in serial. If we want it to run in parallel, we'll have to tell
+it so more directly.
 ::::::
 :::
 
@@ -227,11 +232,17 @@ as many nodes and processes we've already told Slurm we want to use.
 
 ::: challenge
 
-Update `amdahl.yaml` to include `$(LAUNCHER)` before the call to `amdahl`
-in your study's `cmd` field. Run maestro with the updated YAML and
-explore the outputs. How many tasks are mentioned in `amdahl.out`?
-In the Slurm submission script created by Maestro (included in the same
-subdirectory as `amdahl.out`), what text was used to replace `$(LAUNCHER)`?
+Update `amdahl.yaml` to include `$(LAUNCHER)` in the call to `amdahl`
+so that your study's `cmd` field includes
+
+```
+$(LAUNCHER) amdahl >> amdahl.out
+```
+
+Run maestro with the updated YAML and explore the outputs. How many tasks
+are mentioned in `amdahl.out`? In the Slurm submission script created by
+Maestro (included in the same subdirectory as `amdahl.out`), what text
+was used to replace `$(LAUNCHER)`?
 
 :::::: solution
 
@@ -363,7 +374,8 @@ study:
 ::: challenge
 
 Create a YAML file for a value of `-p` of 0.999 (the default value is 0.8)
-for the case where we have a single node and 4 parallel processes.
+for the case where we have a single node and 4 parallel processes. Run
+this workflow with Maestro to make sure your script is working.
 
 :::::: solution
 
@@ -457,8 +469,15 @@ if you run `maestro run --help`.
 
 ::: challenge
 
-Do a dry-run using the script created in the last challenge. This should help you
+Do a couple `dry-run`s using the script created in the last challenge. This should help you
 verify that a new directory "Episode3" gets created for runs from this episode.
+
+**Note**: `--dry-run` is an input for `maestro run`, **not** for `amdahl`. To do a dry
+run, you shouldn't need to update your YAML file at all. Instead, you just run
+
+```
+maestro run --dry-run <YAML filename>
+```
 
 :::::: solution
 
