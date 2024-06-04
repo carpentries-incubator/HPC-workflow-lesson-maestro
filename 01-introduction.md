@@ -229,15 +229,15 @@ Where would `Hello` be written for the following YAML?
 
 ```yml
 description:
-  name: MyHello
-  description: Report a node's hostname.
+    name: MyHello
+    description: Report a node's hostname.
 
 study:
-  - name: give-salutation
-    description: Write the login node's hostname to a file
-    run:
-      cmd: |
-        echo "hello" > greeting.txt
+    - name: give-salutation
+      description: Write the login node's hostname to a file
+      run:
+          cmd: |
+            echo "hello" > greeting.txt
 ```
 
 1. `~/give-salutation_{date}_{time}/greeting/greeting.txt`

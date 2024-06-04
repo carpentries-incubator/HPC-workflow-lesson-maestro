@@ -52,9 +52,10 @@ description:
 
 batch:
     type: slurm
-    host: quartz # machine to run on
-    bank: guests # bank
-    queue: pdebug # partition
+    host: ruby           # machine
+    bank: guests         # bank
+    queue: pbatch        # partition
+    reservation: HPCC1B  # reservation for this workshop
 
 env:
     variables:
@@ -216,9 +217,10 @@ description:
 
 batch:
     type: slurm
-    host: quartz # machine to run on
-    bank: guests # bank
-    queue: pdebug # partition
+    host: ruby           # machine
+    bank: guests         # bank
+    queue: pbatch        # partition
+    reservation: HPCC1B  # reservation for this workshop
 
 env:
     variables:
@@ -341,9 +343,10 @@ description:
 
 batch:
     type: slurm
-    host: pascal # machine to run on
-    bank: lc #bank
-    queue: pvis # partition
+    host: ruby           # machine
+    bank: guests         # bank
+    queue: pbatch        # partition
+    reservation: HPCC1B  # reservation for this workshop
 
 env:
     variables:
@@ -568,9 +571,10 @@ description:
 
 batch:
     type: slurm
-    host: quartz # machine to run on
-    bank: guests # bank
-    queue: pdebug # partition
+    host: ruby           # machine
+    bank: guests         # bank
+    queue: pbatch        # partition
+    reservation: HPCC1B  # reservation for this workshop
 
 env:
     variables:

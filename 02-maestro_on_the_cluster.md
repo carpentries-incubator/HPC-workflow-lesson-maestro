@@ -33,10 +33,11 @@ should run.
 
 ```yml
 batch:
-  type: slurm
-  host: quartz  # enter the machine you'll run on
-  bank: guests  # enter the bank to charge
-  queue: pdebug # enter the partition in which your job should run
+    type: slurm
+    host: ruby          # enter the machine you'll run on
+    bank: guests        # enter the bank to charge
+    queue: pbatch       # partition in which your job should run
+    reservation: HPCC1B # reservation for this workshop
 ```
 
 Second, we need to specify the number of nodes, number of processes,
@@ -47,11 +48,11 @@ a time limit of 30 seconds:
 ```yml
 (...)
     run:
-      cmd: |
-        hostname >> hostname.txt
-      nodes: 1
-      procs: 1
-      walltime: "00:00:30"
+        cmd: |
+          hostname >> hostname.txt
+        nodes: 1
+        procs: 1
+        walltime: "00:00:30"
 ```
 
 Whereas `run` previously held only info about the command we wanted to
@@ -63,26 +64,27 @@ With these changes, our updated YAML file might look like
 
 ```yml
 description:
-  name: Hostnames
-  description: Report a node's hostname.
+    name: Hostnames
+    description: Report a node's hostname.
 
 batch:
-  type: slurm
-  host: quartz # machine to run on
-  bank: guests # bank
-  queue: pdebug # partition
+    type: slurm
+    host: ruby           # machine
+    bank: guests         # bank
+    queue: pbatch        # partition
+    reservation: HPCC1B  # reservation for this workshop
 
 study:
-  - name: hostname-login
-    description: Write the login node's hostname to a file
-    run:
-      cmd: |
-        hostname > hostname_login.txt
-  - name: hostname_batch
-    description: Write the node's hostname to a file
-    run:
-      cmd: |
-        hostname >> hostname.txt
+    - name: hostname-login
+      description: Write the login node's hostname to a file
+      run:
+          cmd: |
+            hostname > hostname_login.txt
+    - name: hostname_batch
+      description: Write the node's hostname to a file
+      run:
+          cmd: |
+            hostname >> hostname.txt
       nodes: 1
       procs: 1
       walltime: "00:00:30"
@@ -99,8 +101,8 @@ slurm.
 ## Running on the cluster
 
 Modify your YAML file, `hostname.yaml` to execute `hostname` on the
-_cluster_.  Run with 1 node and 1 process using the bank `guest` on
-the partition `psummer` on `quartz`.
+_cluster_.  Run with 1 node and 1 process using the bank `guests` on
+the partition `pbatch` on `ruby`.
 
 If you run this multiple times, do you always run on the same node?
 (Is the hostname printed always the same?)
@@ -116,9 +118,10 @@ description:
 
 batch:
     type: slurm
-    host: quartz # machine to run on
-    bank: guest # bank
-    queue: psummer # partition
+    host: ruby           # machine
+    bank: guests         # bank
+    queue: pbatch        # partition
+    reservation: HPCC1B  # reservation for this workshop
 
 study:
     - name: hostname-login
@@ -149,8 +152,9 @@ subdirectory `hostname_batch`, you'll find a file called
 command ran. If you run the job multiple times, you will probably land
 on different nodes; this means you'll see different node numbers in
 different `hostname.txt` files. If you see the same number more than
-once, don't worry! If you get any answer other than `pascal83`, you're
-doing it correctly. :)
+once, don't worry! (If you want to double check that the hostnames
+printed are not for login nodes, you can run `nodeattr -c login` to
+check the IDs of all login nodes on the system.)
 
 ::::::
 

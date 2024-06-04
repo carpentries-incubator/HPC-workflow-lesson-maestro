@@ -143,9 +143,10 @@ description:
 
 batch:
     type: slurm
-    host: quartz # machine to run on
-    bank: guests # bank
-    queue: pdebug # partition
+    host: ruby           # machine
+    bank: guests         # bank
+    queue: pbatch        # partition
+    reservation: HPCC1B  # reservation for this workshop
 
 study:
     - name: amdahl
@@ -184,9 +185,10 @@ description:
 
 batch:
     type: slurm
-    host: quartz # machine to run on
-    bank: guests # bank
-    queue: pdebug # partition
+    host: ruby           # machine
+    bank: guests         # bank
+    queue: pbatch        # partition
+    reservation: HPCC1B  # reservation for this workshop
 
 study:
     - name: amdahl
@@ -224,7 +226,7 @@ parallel proportion of the workload.
 
   Hello, World! I am process 0 of 1 on pascal17.
   I will do all the serial 'work' for 5.324555 seconds.
-  
+
   Hello, World! I am process 0 of 1 on pascal17.
   I will do parallel 'work' for 22.349517 seconds.
 
@@ -298,9 +300,10 @@ description:
 
 batch:
     type: slurm
-    host: quartz # machine to run on
-    bank: guests # bank
-    queue: pdebug # partition
+    host: ruby           # machine
+    bank: guests         # bank
+    queue: pbatch        # partition
+    reservation: HPCC1B  # reservation for this workshop
 
 study:
     - name: amdahl
@@ -372,9 +375,10 @@ description:
 
 batch:
     type: slurm
-    host: quartz  # machine to run on
-    bank: guests  # bank
-    queue: pdebug # partition
+    host: ruby           # machine
+    bank: guests         # bank
+    queue: pbatch        # partition
+    reservation: HPCC1B  # reservation for this workshop
 
 study:
     - name: amdahl
@@ -401,9 +405,10 @@ description:
 
 batch:
     type: slurm
-    host: quartz  # machine to run on
-    bank: guests  # bank
-    queue: pdebug # partition
+    host: ruby           # machine
+    bank: guests         # bank
+    queue: pbatch        # partition
+    reservation: HPCC1B  # reservation for this workshop
 
 study:
     - name: amdahl
@@ -432,9 +437,10 @@ description:
 
 batch:
     type: slurm
-    host: quartz # machine to run on
-    bank: guests # bank
-    queue: pdebug # partition
+    host: ruby           # machine
+    bank: guests         # bank
+    queue: pbatch        # partition
+    reservation: HPCC1B  # reservation for this workshop
 
 study:
     - name: amdahl
@@ -484,9 +490,10 @@ description:
 
 batch:
     type: slurm
-    host: quartz # machine to run on
-    bank: guests # bank
-    queue: pdebug # partition
+    host: ruby           # machine
+    bank: guests         # bank
+    queue: pbatch        # partition
+    reservation: HPCC1B  # reservation for this workshop
 
 env:
     variables:
