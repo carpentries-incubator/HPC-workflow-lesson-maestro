@@ -311,21 +311,21 @@
 <section id="01-introduction"><h2 class="section-heading"><a href="01-introduction.html">Running commands with Maestro</a></h2>
 <hr class="half-width">
 <ul>
-<li>“You execute <code>maestro run</code> with a YAML file including
-information about your run.”</li>
-<li>“Your run includes a description and at least one study (a step in
-your run).”</li>
-<li>“Your maestro run creates a directory with subdirectories and
-outputs for each study.”</li>
-</ul></section><section id="02-maestro_on_the_cluster"><h2 class="section-heading"><a href="02-maestro_on_the_cluster.html">Running Maestro on the clusterHow do I run Maestro on the cluster?<a class="anchor" aria-label="anchor" href="#how-do-i-run-maestro-on-the-cluster"></a></a></h2>
+<li>You execute <code>maestro run</code> with a YAML file including
+information about your run.</li>
+<li>Your run includes a description and at least one study (a step in
+your run).</li>
+<li>Your maestro run creates a directory with subdirectories and outputs
+for each study.</li>
+</ul></section><section id="02-maestro_on_the_cluster"><h2 class="section-heading"><a href="02-maestro_on_the_cluster.html">Running Maestro on the cluster</a></h2>
 <hr class="half-width">
 <ul>
-<li>“You can run on the cluster by including info for Slurm in your
-Maestro YAML file”</li>
-<li>“Maestro generates and submits its own batch scripts to your
-scheduler.”</li>
-<li>“Steps without Slurm parameters will run on the login node by
-default.”</li>
+<li>You can run on the cluster by including info for Slurm in your
+Maestro YAML file</li>
+<li>Maestro generates and submits its own batch scripts to your
+scheduler.</li>
+<li>Steps without Slurm parameters will run on the login node by
+default.</li>
 </ul></section><section id="03-maestro-and-mpi"><h2 class="section-heading"><a href="03-maestro-and-mpi.html">MPI applications and Maestro</a></h2>
 <hr class="half-width">
 <ul>
@@ -338,19 +338,19 @@ structure and scripts are created by a given Maestro YAML file.</li>
 </ul></section><section id="04-placeholders"><h2 class="section-heading"><a href="04-placeholders.html">Placeholders</a></h2>
 <hr class="half-width">
 <ul>
-<li>“Environment variables are placeholders defined under the
-<code>env</code> section of a Maestro YAML.”</li>
-<li>“Parameters defined under <code>global.parameters</code> require
-lists of values and labels.”</li>
+<li>Environment variables are placeholders defined under the
+<code>env</code> section of a Maestro YAML.</li>
+<li>Parameters defined under <code>global.parameters</code> require
+lists of values and labels.</li>
 </ul></section><section id="05-chaining_rules"><h2 class="section-heading"><a href="05-chaining_rules.html">Chaining rules</a></h2>
 <hr class="half-width">
 <ul>
-<li>“We can control the order of steps run in a study by creating
-dependencies.”</li>
-<li>“You can create a dependency with the
-<code>depends: [{step name}]</code> syntax.”</li>
-<li>“Dependency syntax changes to <code>depends: [{step name}_*]</code>
-for parameterized steps.”</li>
+<li>We can control the order of steps run in a study by creating
+dependencies.</li>
+<li>You can create a dependency with the
+<code>depends: [{step name}]</code> syntax.</li>
+<li>Dependency syntax changes to <code>depends: [{step name}_*]</code>
+for parameterized steps.</li>
 </ul></section><section id="06-multiple-parameters"><h2 class="section-heading"><a href="06-multiple-parameters.html">Multiple parameters</a></h2>
 <hr class="half-width">
 <ul>

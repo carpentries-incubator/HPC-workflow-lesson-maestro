@@ -275,7 +275,7 @@ any links that you are not going to use.
  1. <a href="01-introduction.html">Running commands with Maestro</a>
 </td>
 <td>
-“How do I run a simple command with Maestro?”<br>:::
+“How do I run a simple command with Maestro?”
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>01h 00m
@@ -302,7 +302,7 @@ cluster</a>
  4. <a href="04-placeholders.html">Placeholders</a>
 </td>
 <td>
-“How do I make a generic rule?”<br>:::
+“How do I make a generic rule?”
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>03h 50m
@@ -311,8 +311,8 @@ cluster</a>
  5. <a href="05-chaining_rules.html">Chaining rules</a>
 </td>
 <td>
-“How do I combine steps into a workflow?”<br>“How do I make a step that
-uses the outputs from a previous step?”<br>:::
+How do I combine steps into a workflow?<br>How do I make a step that
+uses the outputs from a previous step?
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>05h 00m
@@ -322,7 +322,7 @@ uses the outputs from a previous step?”<br>:::
 </td>
 <td>
 “How do I specify multiple parameters?”<br>“How do multiple parameters
-interact?”<br>:::
+interact?”
 </td>
 </tr><tr><td>
 <span class="visually-hidden">Duration: </span>06h 20m
@@ -338,9 +338,9 @@ any links that you are not going to use.
  --></tbody></table><p>
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
-      </section><section id="setup"><p>This tutorial assumes you have access to the LC system
-<code>Quartz</code> (though many examples will reference the system
-<code>Pascal</code>, which offers an identical environment).</p>
+      </section><section id="setup"><p>This tutorial assumes you have access to the LC system <a href="https://hpc.llnl.gov/hardware/compute-platforms/quartz" class="external-link">Quartz</a>
+(though many examples will reference the system <a href="https://hpc.llnl.gov/hardware/compute-platforms/pascal" class="external-link">Pascal</a>,
+which offers an identical environment).</p>
 <p>If you do not have access to LC systems, you will need to install the
 prerequisites yourself.</p>
 <section id="prerequisites"><h2 class="section-heading">Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"></a>
@@ -353,17 +353,20 @@ prerequisites yourself.</p>
 <li>maestrowf</li>
 <li>amdahl</li>
 </ul></li>
-<li>the script <a href="../plot_terse_amdahl_results.py"><code>plot_terse_amdahl_results.py</code></a>
+<li>the script <a href="../files/plot_terse_amdahl_results.py"><code>plot_terse_amdahl_results.py</code></a>
 </li>
 </ul><div class="section level3">
 <h3 id="if-on-lc">If on LC<a class="anchor" aria-label="anchor" href="#if-on-lc"></a></h3>
-<p>If you are working on <code>Quartz</code>, Maestro is installed to
-the python environment with binaries in
+<p>If you are working on <a href="https://hpc.llnl.gov/hardware/compute-platforms/quartz" class="external-link">Quartz</a>,
+<a href="https://maestrowf.readthedocs.io/en/latest/" class="external-link">Maestro</a> is
+installed to the Python environment with binaries in
 <code>/usr/global/docs/training/janeh/maestro_venv/bin</code>.
 Instructions for how to use these binaries are contained in the
 lesson.</p>
 <p>You will need the python script at
-<code>/usr/global/docs/training/janeh/maestro_venv/plot_terse_amdahl_results.py</code></p>
+<code>/usr/global/docs/training/janeh/maestro_venv/plot_terse_amdahl_results.py</code>
+or <a href="https://github.com/carpentries-incubator/hpc-workflows/raw/main/episodes/files/plot_terse_amdahl_results.py" class="external-link">directly
+from GitHub</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="if-on-your-own">If on your own<a class="anchor" aria-label="anchor" href="#if-on-your-own"></a></h3>
@@ -395,7 +398,9 @@ of local machine you’re working on.</p>
 </button>
 <div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
 <div class="accordion-body">
-<p>Use XWin32 or RealVNC’s VNC Viewer.</p>
+<p>Use <a href="https://www.starnet.com/xwin32/" class="external-link">XWin32</a> or RealVNC’s
+<a href="https://www.realvnc.com/en/connect/download/viewer/" class="external-link">VNC
+Viewer</a>.</p>
 </div>
 </div>
 </div>
@@ -408,7 +413,9 @@ of local machine you’re working on.</p>
 </button>
 <div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
 <div class="accordion-body">
-<p>Use Terminal.app or RealVNC’s VNC Viewer.</p>
+<p>Use <a href="https://support.apple.com/guide/terminal/welcome/mac" class="external-link">Terminal.app</a>
+or RealVNC’s <a href="https://www.realvnc.com/en/connect/download/viewer/" class="external-link">VNC
+Viewer</a>.</p>
 </div>
 </div>
 </div>
@@ -421,11 +428,14 @@ of local machine you’re working on.</p>
 </button>
 <div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
 <div class="accordion-body">
-<p>Use Terminal or RealVNC’s VNC Viewer.</p>
+<p>Use <a href="https://help.ubuntu.com/community/UsingTheTerminal" class="external-link">Terminal</a>
+or RealVNC’s <a href="https://www.realvnc.com/en/connect/download/viewer/" class="external-link">VNC
+Viewer</a>.</p>
 </div>
 </div>
 </div>
 </div>
+<!-- links -->
 <!-- 
 Place links that you need to refer to multiple times across pages here. Delete
 any links that you are not going to use. 
