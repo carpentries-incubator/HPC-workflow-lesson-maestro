@@ -2,7 +2,7 @@
 title: Setup
 ---
 
-This tutorial assumes you have access to the LC system [Quartz][quartz] (though
+This tutorial assumes you have access to the LC system [Ruby][ruby] (though
 many examples will reference the system [Pascal][pascal], which offers an
 identical environment).
 
@@ -12,19 +12,24 @@ prerequisites yourself.
 ## Prerequisites
 
 * A python3 environment including
-  * sys
-  * json
-  * matplotlib
-  * numpy
-  * maestrowf
-  * amdahl
-* the script [`plot_terse_amdahl_results.py`](files/plot_terse_amdahl_results.py)
+  * common libraries:
+    * sys
+    * json
+    * matplotlib
+    * mpi4py
+    * numpy
+  * Maestro and related scripts:
+    * [amdahl](https://github.com/hpc-carpentry/amdahl)
+    * [maestrowf](https://maestrowf.readthedocs.io/en/latest/)
+    * [yamllint](https://yamllint.readthedocs.io/en/stable/)
+  * the script [`plot_terse_amdahl_results.py`](files/plot_terse_amdahl_results.py)
 
 ### If on LC
 
-If you are working on [Quartz][quartz], [Maestro][maestro] is installed to the Python
-environment with binaries in `/usr/global/docs/training/janeh/maestro_venv/bin`.
-Instructions for how to use these binaries are contained in the lesson.
+If you are working on [Ruby][ruby], [Maestro][maestro] is installed to
+a Python [virtual environment][venv] with binaries in
+`/usr/global/docs/training/janeh/maestro_venv/bin`. Instructions for
+how to use these binaries are contained in the lesson.
 
 You will need the python script at
 `/usr/global/docs/training/janeh/maestro_venv/plot_terse_amdahl_results.py`
@@ -33,18 +38,80 @@ or [directly from GitHub][plot_script].
 ### If on your own
 
 Some Maestro commands will work locally but others won't make sense unless
-you're connected to a cluster with slurm installed. Wherever you're working,
-you'll need to install the prerequisite python packages listed above and
+you're connected to a cluster with Slurm installed. Wherever you're working,
+you'll need to install the prerequisite Python packages listed above and
 download the python plotting script.
 
-## How to connect over ssh
+The recommended way to install these packages is inside a Python
+[virtual environment][venv]. You create one using the `venv` module
+and specifying the directory in which your environment will be
+contained:
+
+``` bash
+mkdir ~/venvs
+python3 -m venv ~/venvs/maestro
+```
+
+This should create the folder at `~/venvs/maestro`, containing
+
+``` bash
+ls ~/venvs/maestro
+```
+
+``` output
+bin/  include/  lib/  lib64  pyvenv.cfg
+```
+
+Now you can activate the environment. If your shell is `bash`,
+
+``` bash
+source ~/venvs/maestro/bin/activate
+```
+
+Otherwise, use the `activate` command appropriate for your shell.
+For example,
+
+``` bash
+echo $SHELL
+```
+
+``` output
+/bin/tcsh
+```
+
+``` bash
+source ~/venvs/maestro/bin/activate.csh
+```
+
+Your terminal prompt should now have a `(maestro)` prefix, indicating
+that the environment was successfully activated. This environment
+includes `pip`, a Python package manager. Use it to install the
+required libraries:
+
+``` bash
+pip install amdahl maestrowf yamllint
+```
+
+Specifying these three custom libraries should be sufficient:
+their dependencies will be pulled in by `pip` automagically!
+
+Finally, copy the `plot_terse_amdahl_results.py` script into
+your venv's `bin` directory and make it executable:
+
+``` bash
+cd ~/venvs/maestro/bin
+wget https://github.com/xorJane/maestro-workflow-lesson/raw/main/episodes/files/plot_terse_amdahl_results.py
+chmod +x plot_terse_amdahl_results.py
+```
+
+## How to connect over SSH
 
 ::::::::::::::::::::::::::::::::::::::: discussion
 
 ### Details
 
-The application you use to connect to Quartz will depend on the type
-of local machine you're working on.
+The application you use to connect to Ruby will depend on the
+type of local machine you're working on.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -76,8 +143,9 @@ Use [Terminal][term] or RealVNC's [VNC Viewer][rvnc].
 [maestro]: https://maestrowf.readthedocs.io/en/latest/
 [pascal]: https://hpc.llnl.gov/hardware/compute-platforms/pascal
 [plot_script]: https://github.com/carpentries-incubator/hpc-workflows/raw/main/episodes/files/plot_terse_amdahl_results.py
-[quartz]: https://hpc.llnl.gov/hardware/compute-platforms/quartz
+[ruby]: https://hpc.llnl.gov/hardware/compute-platforms/ruby
 [rvnc]: https://www.realvnc.com/en/connect/download/viewer/
 [tapp]: https://support.apple.com/guide/terminal/welcome/mac
 [term]: https://help.ubuntu.com/community/UsingTheTerminal
+[venv]: https://docs.python.org/3/library/venv.html
 [xwin]: https://www.starnet.com/xwin32/
