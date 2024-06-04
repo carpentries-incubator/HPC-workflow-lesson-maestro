@@ -16,7 +16,7 @@ def process_files(output, file_list):
     value_tuples=[]
     for filename in file_list:
       # Open the JSON file and load data
-      with open(filename, 'r') as file:
+      with open(str(filename), 'r') as file:
         data = json.load(file)
       value_tuples.append((data['nproc'], data['execution_time']))
 
@@ -31,7 +31,7 @@ def process_files(output, file_list):
 
     # Adding the y=1/x line
     x_line = np.linspace(1, max(x), 100)  # Create x values for the line
-    y_line = (y[0] / x[0]) / x_line  # Calculate corresponding (scaled) y values
+    y_line = (y[0] / x[0]) / x_line       # Calculate corresponding (scaled) y values
 
     plt.plot(x_line, y_line, linestyle='--',
              color='red', label='Perfect scaling')
@@ -57,13 +57,11 @@ if __name__ == "__main__":
         "output",
         default="scaling-study.png",
         help="Image file to write (PNG or JPG)",
-        type=argparse.FileType("w"),
     )
 
     parser.add_argument(
-        "inputs",
+        "--files",
         help="List of Amdahl terse output files (JSON)",
-        type=argparse.FileType("r"),
         nargs="+"
     )
 
