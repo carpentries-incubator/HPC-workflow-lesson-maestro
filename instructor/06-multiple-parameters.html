@@ -396,39 +396,40 @@ of <code>P</code> 5 times:</p>
 <span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="fu">batch</span><span class="kw">:</span></span>
 <span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> slurm</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="at">    </span><span class="fu">host</span><span class="kw">:</span><span class="at"> quartz</span><span class="co">  # machine to run on</span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="at">    </span><span class="fu">bank</span><span class="kw">:</span><span class="at"> guests</span><span class="co">  # bank</span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="at">    </span><span class="fu">queue</span><span class="kw">:</span><span class="at"> pdebug</span><span class="co"> # partition</span></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="fu">env</span><span class="kw">:</span></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="at">    </span><span class="fu">variables</span><span class="kw">:</span></span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="at">      </span><span class="fu">OUTPUT</span><span class="kw">:</span><span class="at"> amdahl.json</span></span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="at">      </span><span class="fu">OUTPUT_PATH</span><span class="kw">:</span><span class="at"> ./Episode6</span></span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="fu">study</span><span class="kw">:</span></span>
-<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> run-amdahl</span></span>
-<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> run in parallel</span></span>
-<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
-<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">          # Here's where we include our MPI wrapper:</span></span>
-<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a>               $(LAUNCHER) amdahl --terse -p $(P) &gt;&gt; $(OUTPUT)</span>
-<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="at">          </span><span class="fu">nodes</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="at">          </span><span class="fu">procs</span><span class="kw">:</span><span class="at"> $(TASKS)</span></span>
-<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="at">          </span><span class="fu">walltime</span><span class="kw">:</span><span class="at"> </span><span class="st">"00:01:30"</span></span>
-<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> plot</span></span>
-<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Create a plot from `amdahl` results</span></span>
-<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
-<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a>               python3 $(SPECROOT)/plot_terse_amdahl_results.py output.jpg $(run-amdahl.workspace)/TASKS.*/amdahl.json</span>
-<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="at">          </span><span class="fu">depends</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">amdahl_</span><span class="ot">*]</span></span>
-<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a></span>
-<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a><span class="fu">global.parameters</span><span class="kw">:</span></span>
-<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="at">    </span><span class="fu">TASKS</span><span class="kw">:</span></span>
-<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="at">        </span><span class="fu">values</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">,</span><span class="at"> </span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">]</span></span>
-<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> TASKS.%%</span></span>
-<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a><span class="at">    P:</span></span>
-<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a><span class="at">        values: [.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">]</span></span>
-<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> P.%%</span></span></code></pre>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="at">    </span><span class="fu">host</span><span class="kw">:</span><span class="at"> ruby</span><span class="co">           # machine</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="at">    </span><span class="fu">bank</span><span class="kw">:</span><span class="at"> guests</span><span class="co">         # bank</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="at">    </span><span class="fu">queue</span><span class="kw">:</span><span class="at"> pbatch</span><span class="co">        # partition</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="at">    </span><span class="fu">reservation</span><span class="kw">:</span><span class="at"> HPCC1B</span><span class="co">  # reservation for this workshop</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="fu">env</span><span class="kw">:</span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="at">    </span><span class="fu">variables</span><span class="kw">:</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="at">      </span><span class="fu">OUTPUT</span><span class="kw">:</span><span class="at"> amdahl.json</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="at">      </span><span class="fu">OUTPUT_PATH</span><span class="kw">:</span><span class="at"> ./Episode6</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="fu">study</span><span class="kw">:</span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> run-amdahl</span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> run in parallel</span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">          # Here's where we include our MPI wrapper:</span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a>               $(LAUNCHER) amdahl --terse -p $(P) &gt;&gt; $(OUTPUT)</span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="at">          </span><span class="fu">nodes</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="at">          </span><span class="fu">procs</span><span class="kw">:</span><span class="at"> $(TASKS)</span></span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="at">          </span><span class="fu">walltime</span><span class="kw">:</span><span class="at"> </span><span class="st">"00:01:30"</span></span>
+<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> plot</span></span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Create a plot from `amdahl` results</span></span>
+<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
+<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a>               python3 $(SPECROOT)/plot_terse_amdahl_results.py output.jpg $(run-amdahl.workspace)/TASKS.*/amdahl.json</span>
+<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="at">          </span><span class="fu">depends</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">amdahl_</span><span class="ot">*]</span></span>
+<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a></span>
+<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="fu">global.parameters</span><span class="kw">:</span></span>
+<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="at">    </span><span class="fu">TASKS</span><span class="kw">:</span></span>
+<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a><span class="at">        </span><span class="fu">values</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">,</span><span class="at"> </span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">]</span></span>
+<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> TASKS.%%</span></span>
+<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a><span class="at">    P:</span></span>
+<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a><span class="at">        values: [.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">]</span></span>
+<span id="cb5-40"><a href="#cb5-40" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> P.%%</span></span></code></pre>
 </div>
 <div id="challenge1" class="callout challenge">
 <div class="callout-square">
@@ -448,7 +449,7 @@ not, why not?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>If you use the YAML above, your <code>amdahl-run</code> steps should
 work, but your <code>plot</code> step will fail. <code>plot</code>’s
@@ -567,7 +568,7 @@ choosing.)</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Your full YAML file should be similar to</p>
 <div class="codewrapper sourceCode" id="cb13">
@@ -579,39 +580,40 @@ choosing.)</p>
 <span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a></span>
 <span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="fu">batch</span><span class="kw">:</span></span>
 <span id="cb13-6"><a href="#cb13-6" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> slurm</span></span>
-<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="at">    </span><span class="fu">host</span><span class="kw">:</span><span class="at"> quartz</span><span class="co"> # machine to run on</span></span>
-<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="at">    </span><span class="fu">bank</span><span class="kw">:</span><span class="at"> guests</span><span class="co"> # bank</span></span>
-<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="at">    </span><span class="fu">queue</span><span class="kw">:</span><span class="at"> pdebug</span><span class="co"> # partition</span></span>
-<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a></span>
-<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a><span class="fu">env</span><span class="kw">:</span></span>
-<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="at">    </span><span class="fu">variables</span><span class="kw">:</span></span>
-<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="at">      </span><span class="fu">OUTPUT</span><span class="kw">:</span><span class="at"> amdahl.json</span></span>
-<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="at">      </span><span class="fu">OUTPUT_PATH</span><span class="kw">:</span><span class="at"> ./Episode6</span></span>
-<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a></span>
-<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a><span class="fu">study</span><span class="kw">:</span></span>
-<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> run-amdahl</span></span>
-<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> run in parallel</span></span>
-<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
-<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="co">          # Here's where we include our MPI wrapper:</span></span>
-<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a>               $(LAUNCHER) amdahl --terse -p $(P) &gt;&gt; $(OUTPUT)</span>
-<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a><span class="at">          </span><span class="fu">nodes</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a><span class="at">          </span><span class="fu">procs</span><span class="kw">:</span><span class="at"> $(TASKS)</span></span>
-<span id="cb13-25"><a href="#cb13-25" tabindex="-1"></a><span class="at">          </span><span class="fu">walltime</span><span class="kw">:</span><span class="at"> </span><span class="st">"00:01:30"</span></span>
-<span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> plot</span></span>
-<span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Create a plot from `amdahl` results</span></span>
-<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
-<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a>               python3 $(SPECROOT)/plot_terse_amdahl_results.py output.jpg $(run-amdahl.workspace)/P.$(P).TASKS.*/amdahl.json</span>
-<span id="cb13-31"><a href="#cb13-31" tabindex="-1"></a><span class="at">          </span><span class="fu">depends</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">amdahl_</span><span class="ot">*]</span></span>
-<span id="cb13-32"><a href="#cb13-32" tabindex="-1"></a></span>
-<span id="cb13-33"><a href="#cb13-33" tabindex="-1"></a><span class="fu">global.parameters</span><span class="kw">:</span></span>
-<span id="cb13-34"><a href="#cb13-34" tabindex="-1"></a><span class="at">    </span><span class="fu">TASKS</span><span class="kw">:</span></span>
-<span id="cb13-35"><a href="#cb13-35" tabindex="-1"></a><span class="at">        </span><span class="fu">values</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">,</span><span class="at"> </span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">]</span></span>
-<span id="cb13-36"><a href="#cb13-36" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> TASKS.%%</span></span>
-<span id="cb13-37"><a href="#cb13-37" tabindex="-1"></a><span class="at">    P:</span></span>
-<span id="cb13-38"><a href="#cb13-38" tabindex="-1"></a><span class="at">        values: [.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">]</span></span>
-<span id="cb13-39"><a href="#cb13-39" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> P.%%</span></span></code></pre>
+<span id="cb13-7"><a href="#cb13-7" tabindex="-1"></a><span class="at">    </span><span class="fu">host</span><span class="kw">:</span><span class="at"> ruby</span><span class="co">           # machine</span></span>
+<span id="cb13-8"><a href="#cb13-8" tabindex="-1"></a><span class="at">    </span><span class="fu">bank</span><span class="kw">:</span><span class="at"> guests</span><span class="co">         # bank</span></span>
+<span id="cb13-9"><a href="#cb13-9" tabindex="-1"></a><span class="at">    </span><span class="fu">queue</span><span class="kw">:</span><span class="at"> pbatch</span><span class="co">        # partition</span></span>
+<span id="cb13-10"><a href="#cb13-10" tabindex="-1"></a><span class="at">    </span><span class="fu">reservation</span><span class="kw">:</span><span class="at"> HPCC1B</span><span class="co">  # reservation for this workshop</span></span>
+<span id="cb13-11"><a href="#cb13-11" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" tabindex="-1"></a><span class="fu">env</span><span class="kw">:</span></span>
+<span id="cb13-13"><a href="#cb13-13" tabindex="-1"></a><span class="at">    </span><span class="fu">variables</span><span class="kw">:</span></span>
+<span id="cb13-14"><a href="#cb13-14" tabindex="-1"></a><span class="at">      </span><span class="fu">OUTPUT</span><span class="kw">:</span><span class="at"> amdahl.json</span></span>
+<span id="cb13-15"><a href="#cb13-15" tabindex="-1"></a><span class="at">      </span><span class="fu">OUTPUT_PATH</span><span class="kw">:</span><span class="at"> ./Episode6</span></span>
+<span id="cb13-16"><a href="#cb13-16" tabindex="-1"></a></span>
+<span id="cb13-17"><a href="#cb13-17" tabindex="-1"></a><span class="fu">study</span><span class="kw">:</span></span>
+<span id="cb13-18"><a href="#cb13-18" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> run-amdahl</span></span>
+<span id="cb13-19"><a href="#cb13-19" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> run in parallel</span></span>
+<span id="cb13-20"><a href="#cb13-20" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
+<span id="cb13-21"><a href="#cb13-21" tabindex="-1"></a><span class="co">          # Here's where we include our MPI wrapper:</span></span>
+<span id="cb13-22"><a href="#cb13-22" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb13-23"><a href="#cb13-23" tabindex="-1"></a>               $(LAUNCHER) amdahl --terse -p $(P) &gt;&gt; $(OUTPUT)</span>
+<span id="cb13-24"><a href="#cb13-24" tabindex="-1"></a><span class="at">          </span><span class="fu">nodes</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb13-25"><a href="#cb13-25" tabindex="-1"></a><span class="at">          </span><span class="fu">procs</span><span class="kw">:</span><span class="at"> $(TASKS)</span></span>
+<span id="cb13-26"><a href="#cb13-26" tabindex="-1"></a><span class="at">          </span><span class="fu">walltime</span><span class="kw">:</span><span class="at"> </span><span class="st">"00:01:30"</span></span>
+<span id="cb13-27"><a href="#cb13-27" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> plot</span></span>
+<span id="cb13-28"><a href="#cb13-28" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Create a plot from `amdahl` results</span></span>
+<span id="cb13-29"><a href="#cb13-29" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
+<span id="cb13-30"><a href="#cb13-30" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb13-31"><a href="#cb13-31" tabindex="-1"></a>               python3 $(SPECROOT)/plot_terse_amdahl_results.py output.jpg $(run-amdahl.workspace)/P.$(P).TASKS.*/amdahl.json</span>
+<span id="cb13-32"><a href="#cb13-32" tabindex="-1"></a><span class="at">          </span><span class="fu">depends</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">amdahl_</span><span class="ot">*]</span></span>
+<span id="cb13-33"><a href="#cb13-33" tabindex="-1"></a></span>
+<span id="cb13-34"><a href="#cb13-34" tabindex="-1"></a><span class="fu">global.parameters</span><span class="kw">:</span></span>
+<span id="cb13-35"><a href="#cb13-35" tabindex="-1"></a><span class="at">    </span><span class="fu">TASKS</span><span class="kw">:</span></span>
+<span id="cb13-36"><a href="#cb13-36" tabindex="-1"></a><span class="at">        </span><span class="fu">values</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">,</span><span class="at"> </span><span class="dv">2</span><span class="kw">,</span><span class="at"> </span><span class="dv">4</span><span class="kw">,</span><span class="at"> </span><span class="dv">8</span><span class="kw">,</span><span class="at"> </span><span class="dv">16</span><span class="kw">,</span><span class="at"> </span><span class="dv">32</span><span class="kw">]</span></span>
+<span id="cb13-37"><a href="#cb13-37" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> TASKS.%%</span></span>
+<span id="cb13-38"><a href="#cb13-38" tabindex="-1"></a><span class="at">    P:</span></span>
+<span id="cb13-39"><a href="#cb13-39" tabindex="-1"></a><span class="at">        values: [.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.5</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">,</span><span class="at"> </span><span class="fl">.99</span><span class="kw">]</span></span>
+<span id="cb13-40"><a href="#cb13-40" tabindex="-1"></a><span class="at">        </span><span class="fu">label</span><span class="kw">:</span><span class="at"> P.%%</span></span></code></pre>
 </div>
 <p>Modifying <code>plot</code> to include <code>$(P)</code> caused this
 step to run twice. As a result, two subdirectories under

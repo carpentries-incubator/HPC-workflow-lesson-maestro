@@ -318,10 +318,11 @@ your jobs should run.</p>
 <h3 class="code-label">YML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode yml" tabindex="0"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">batch</span><span class="kw">:</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> slurm</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="at">  </span><span class="fu">host</span><span class="kw">:</span><span class="at"> quartz</span><span class="co">  # enter the machine you'll run on</span></span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="at">  </span><span class="fu">bank</span><span class="kw">:</span><span class="at"> guests</span><span class="co">  # enter the bank to charge</span></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="at">  </span><span class="fu">queue</span><span class="kw">:</span><span class="at"> pdebug</span><span class="co"> # enter the partition in which your job should run</span></span></code></pre>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> slurm</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a><span class="at">    </span><span class="fu">host</span><span class="kw">:</span><span class="at"> ruby</span><span class="co">          # enter the machine you'll run on</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a><span class="at">    </span><span class="fu">bank</span><span class="kw">:</span><span class="at"> guests</span><span class="co">        # enter the bank to charge</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a><span class="at">    </span><span class="fu">queue</span><span class="kw">:</span><span class="at"> pbatch</span><span class="co">       # partition in which your job should run</span></span>
+<span id="cb2-6"><a href="#cb2-6" tabindex="-1"></a><span class="at">    </span><span class="fu">reservation</span><span class="kw">:</span><span class="at"> HPCC1B</span><span class="co"> # reservation for this workshop</span></span></code></pre>
 </div>
 <p>Second, we need to specify the number of nodes, number of processes,
 and walltime for <em>each step</em> in our YAML file. This information
@@ -332,11 +333,11 @@ process, and a time limit of 30 seconds:</p>
 </h3>
 <pre class="sourceCode yml" tabindex="0"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="at">(...)</span></span>
 <span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="at">    </span><span class="fu">run</span><span class="kw">:</span></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">      cmd</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>        hostname &gt;&gt; hostname.txt</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="at">      </span><span class="fu">nodes</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="at">      </span><span class="fu">procs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="at">      </span><span class="fu">walltime</span><span class="kw">:</span><span class="at"> </span><span class="st">"00:00:30"</span></span></code></pre>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="fu">        cmd</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>          hostname &gt;&gt; hostname.txt</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="at">        </span><span class="fu">nodes</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="at">        </span><span class="fu">procs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="at">        </span><span class="fu">walltime</span><span class="kw">:</span><span class="at"> </span><span class="st">"00:00:30"</span></span></code></pre>
 </div>
 <p>Whereas <code>run</code> previously held only info about the command
 we wanted to execute, steps run on the cluster include a specification
@@ -348,29 +349,30 @@ the format of the walltime includes quotation marks –
 <h3 class="code-label">YML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode yml" tabindex="0"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Hostnames</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="at">  </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Report a node's hostname.</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Hostnames</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Report a node's hostname.</span></span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">batch</span><span class="kw">:</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> slurm</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="at">  </span><span class="fu">host</span><span class="kw">:</span><span class="at"> quartz</span><span class="co"> # machine to run on</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="at">  </span><span class="fu">bank</span><span class="kw">:</span><span class="at"> guests</span><span class="co"> # bank</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="at">  </span><span class="fu">queue</span><span class="kw">:</span><span class="at"> pdebug</span><span class="co"> # partition</span></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="fu">study</span><span class="kw">:</span></span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> hostname-login</span></span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Write the login node's hostname to a file</span></span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="at">    </span><span class="fu">run</span><span class="kw">:</span></span>
-<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="fu">      cmd</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a>        hostname &gt; hostname_login.txt</span>
-<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="at">  </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> hostname_batch</span></span>
-<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Write the node's hostname to a file</span></span>
-<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="at">    </span><span class="fu">run</span><span class="kw">:</span></span>
-<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="fu">      cmd</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a>        hostname &gt;&gt; hostname.txt</span>
-<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a><span class="at">      </span><span class="fu">nodes</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="at">      </span><span class="fu">procs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a><span class="at">      </span><span class="fu">walltime</span><span class="kw">:</span><span class="at"> </span><span class="st">"00:00:30"</span></span></code></pre>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> slurm</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="at">    </span><span class="fu">host</span><span class="kw">:</span><span class="at"> ruby</span><span class="co">           # machine</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="at">    </span><span class="fu">bank</span><span class="kw">:</span><span class="at"> guests</span><span class="co">         # bank</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="at">    </span><span class="fu">queue</span><span class="kw">:</span><span class="at"> pbatch</span><span class="co">        # partition</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="at">    </span><span class="fu">reservation</span><span class="kw">:</span><span class="at"> HPCC1B</span><span class="co">  # reservation for this workshop</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="fu">study</span><span class="kw">:</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> hostname-login</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Write the login node's hostname to a file</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a>            hostname &gt; hostname_login.txt</span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> hostname_batch</span></span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Write the node's hostname to a file</span></span>
+<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
+<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a>            hostname &gt;&gt; hostname.txt</span>
+<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="at">      </span><span class="fu">nodes</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a><span class="at">      </span><span class="fu">procs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a><span class="at">      </span><span class="fu">walltime</span><span class="kw">:</span><span class="at"> </span><span class="st">"00:00:30"</span></span></code></pre>
 </div>
 <p>Note that we left the rule <code>hostname-login</code> as is. Because
 we do not specify any info for slurm under this original step’s
@@ -387,8 +389,8 @@ will continue running on the login node and only
 <div class="callout-content">
 <p>Modify your YAML file, <code>hostname.yaml</code> to execute
 <code>hostname</code> on the <em>cluster</em>. Run with 1 node and 1
-process using the bank <code>guest</code> on the partition
-<code>psummer</code> on <code>quartz</code>.</p>
+process using the bank <code>guests</code> on the partition
+<code>pbatch</code> on <code>ruby</code>.</p>
 <p>If you run this multiple times, do you always run on the same node?
 (Is the hostname printed always the same?)</p>
 </div>
@@ -412,24 +414,25 @@ like:</p>
 <span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="fu">batch</span><span class="kw">:</span></span>
 <span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> slurm</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="at">    </span><span class="fu">host</span><span class="kw">:</span><span class="at"> quartz</span><span class="co"> # machine to run on</span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="at">    </span><span class="fu">bank</span><span class="kw">:</span><span class="at"> guest</span><span class="co"> # bank</span></span>
-<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="at">    </span><span class="fu">queue</span><span class="kw">:</span><span class="at"> psummer</span><span class="co"> # partition</span></span>
-<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="fu">study</span><span class="kw">:</span></span>
-<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> hostname-login</span></span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Write the login node's hostname to a file</span></span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a>              hostname &gt; hostname_login.txt</span>
-<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> hostname_batch</span></span>
-<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Write the node's hostname to a file</span></span>
-<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
-<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a>               hostname &gt;&gt; hostname.txt</span>
-<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="at">          </span><span class="fu">nodes</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="at">          </span><span class="fu">procs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="at">          </span><span class="fu">walltime</span><span class="kw">:</span><span class="at"> </span><span class="st">"00:00:30"</span></span></code></pre>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="at">    </span><span class="fu">host</span><span class="kw">:</span><span class="at"> ruby</span><span class="co">           # machine</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="at">    </span><span class="fu">bank</span><span class="kw">:</span><span class="at"> guests</span><span class="co">         # bank</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="at">    </span><span class="fu">queue</span><span class="kw">:</span><span class="at"> pbatch</span><span class="co">        # partition</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="at">    </span><span class="fu">reservation</span><span class="kw">:</span><span class="at"> HPCC1B</span><span class="co">  # reservation for this workshop</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="fu">study</span><span class="kw">:</span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> hostname-login</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Write the login node's hostname to a file</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a>              hostname &gt; hostname_login.txt</span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> hostname_batch</span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Write the node's hostname to a file</span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a>               hostname &gt;&gt; hostname.txt</span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="at">          </span><span class="fu">nodes</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="at">          </span><span class="fu">procs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="at">          </span><span class="fu">walltime</span><span class="kw">:</span><span class="at"> </span><span class="st">"00:00:30"</span></span></code></pre>
 </div>
 <p>Go ahead and run the job:</p>
 <div class="codewrapper sourceCode" id="cb6">
@@ -443,9 +446,10 @@ called <code>hostname.txt</code> with info about the compute node where
 the <code>hostname</code> command ran. If you run the job multiple
 times, you will probably land on different nodes; this means you’ll see
 different node numbers in different <code>hostname.txt</code> files. If
-you see the same number more than once, don’t worry! If you get any
-answer other than <code>pascal83</code>, you’re doing it correctly.
-:)</p>
+you see the same number more than once, don’t worry! (If you want to
+double check that the hostnames printed are not for login nodes, you can
+run <code>nodeattr -c login</code> to check the IDs of all login nodes
+on the system.)</p>
 </div>
 </div>
 </div>
