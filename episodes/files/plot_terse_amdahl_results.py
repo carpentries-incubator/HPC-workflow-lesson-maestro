@@ -54,14 +54,15 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "output",
+        "--output",
         default="scaling-study.png",
         help="Image file to write (PNG or JPG)",
+        required=True
     )
 
     parser.add_argument(
-        "--files",
-        help="List of Amdahl terse output files (JSON)",
+        "inputs",
+        help="Amdahl terse output files (JSON)",
         nargs="+"
     )
 
