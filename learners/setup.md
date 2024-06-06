@@ -52,6 +52,23 @@ mkdir ~/venvs
 python3 -m venv ~/venvs/maestro
 ```
 
+<details>
+<summary>
+ 
+(Click the arrow for a note to LC users trying to build their own virtual
+environments with Maestro)
+ 
+</summary>
+We recommend that LC users add the flag `--system-site-packages` when
+creating a virtual environment:
+ 
+``` bash
+mkdir ~/venvs
+python3 -m venv --system-site-packages ~/venvs/maestro
+```
+
+</details>
+
 This should create the folder at `~/venvs/maestro`, containing
 
 ``` bash
