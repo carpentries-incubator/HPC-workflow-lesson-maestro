@@ -570,7 +570,7 @@ be written?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol start="4" style="list-style-type: decimal">
 <li>hostname_login.txt</li>
@@ -623,7 +623,7 @@ written to
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol start="3" style="list-style-type: decimal">
 <li><code>.../MyHello_{date}_{time}/give-salutation/greeting.txt</code></li>
@@ -663,7 +663,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-02-maestro_on_the_cluster"><p>Content from <a href="02-maestro_on_the_cluster.html">Running Maestro on the cluster</a></p>
 <hr>
-<p>Last updated on 2024-06-04 |
+<p>Last updated on 2024-06-06 |
         
         <a href="https://github.com/carpentries-incubator/hpc-workflows/edit/main/episodes/02-maestro_on_the_cluster.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -730,31 +730,32 @@ the format of the walltime includes quotation marks –
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">YML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode yml" tabindex="0"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Hostnames</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Report a node's hostname.</span></span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="fu">batch</span><span class="kw">:</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> slurm</span></span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="at">    </span><span class="fu">host</span><span class="kw">:</span><span class="at"> ruby</span><span class="co">           # machine</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="at">    </span><span class="fu">bank</span><span class="kw">:</span><span class="at"> guests</span><span class="co">         # bank</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="at">    </span><span class="fu">queue</span><span class="kw">:</span><span class="at"> pbatch</span><span class="co">        # partition</span></span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="at">    </span><span class="fu">reservation</span><span class="kw">:</span><span class="at"> HPCC1B</span><span class="co">  # reservation for this workshop</span></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="fu">study</span><span class="kw">:</span></span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> hostname-login</span></span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Write the login node's hostname to a file</span></span>
-<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a>            hostname &gt; hostname_login.txt</span>
-<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> hostname_batch</span></span>
-<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Write the node's hostname to a file</span></span>
-<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
-<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
-<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a>            hostname &gt;&gt; hostname.txt</span>
-<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="at">      </span><span class="fu">nodes</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a><span class="at">      </span><span class="fu">procs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a><span class="at">      </span><span class="fu">walltime</span><span class="kw">:</span><span class="at"> </span><span class="st">"00:00:30"</span></span></code></pre>
+<pre class="sourceCode yml" tabindex="0"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">description</span><span class="kw">:</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="at">    </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Hostnames</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="at">    </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Report a node's hostname.</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="fu">batch</span><span class="kw">:</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="at">    </span><span class="fu">type</span><span class="kw">:</span><span class="at"> slurm</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="at">    </span><span class="fu">host</span><span class="kw">:</span><span class="at"> ruby</span><span class="co">           # machine</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="at">    </span><span class="fu">bank</span><span class="kw">:</span><span class="at"> guests</span><span class="co">         # bank</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="at">    </span><span class="fu">queue</span><span class="kw">:</span><span class="at"> pbatch</span><span class="co">        # partition</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="at">    </span><span class="fu">reservation</span><span class="kw">:</span><span class="at"> HPCC1B</span><span class="co">  # reservation for this workshop</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="fu">study</span><span class="kw">:</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> hostname-login</span></span>
+<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Write the login node's hostname to a file</span></span>
+<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
+<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a>            hostname &gt; hostname_login.txt</span>
+<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="at">    </span><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> hostname_batch</span></span>
+<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="at">      </span><span class="fu">description</span><span class="kw">:</span><span class="at"> Write the node's hostname to a file</span></span>
+<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="at">      </span><span class="fu">run</span><span class="kw">:</span></span>
+<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a><span class="fu">          cmd</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a>            hostname &gt;&gt; hostname.txt</span>
+<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a><span class="at">          </span><span class="fu">nodes</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a><span class="at">          </span><span class="fu">procs</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb4-26"><a href="#cb4-26" tabindex="-1"></a><span class="at">          </span><span class="fu">walltime</span><span class="kw">:</span><span class="at"> </span><span class="st">"00:00:30"</span></span></code></pre>
 </div>
 <p>Note that we left the rule <code>hostname-login</code> as is. Because
 we do not specify any info for slurm under this original step’s
@@ -783,7 +784,7 @@ process using the bank <code>guests</code> on the partition
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The contents of <code>hostname.yaml</code> should look something
 like:</p>
@@ -1040,7 +1041,7 @@ changes as we use more processors.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>You should see output that looks roughly like</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -1095,7 +1096,7 @@ file.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Your YAML file might be named <code>amdahl.yaml</code> and its
 contents might look like</p>
@@ -1141,7 +1142,7 @@ single task is reporting on its work in your output file.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The contents of <code>amdahl.yaml</code> should now look something
 like</p>
@@ -1198,7 +1199,7 @@ work in the output file?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Your YAML files contents are now updated to</p>
 <div class="codewrapper sourceCode" id="cb9">
@@ -1327,7 +1328,7 @@ script created by Maestro (included in the same subdirectory as
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>The updated YAML should look something like</p>
 <div class="codewrapper sourceCode" id="cb14">
@@ -1489,7 +1490,7 @@ script is working.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Show me the solution</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">YML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1561,7 +1562,7 @@ above).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7">Show me the solution</h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">YML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1631,7 +1632,7 @@ Instead, you just run</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8">Show me the solution</h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <p>After running</p>
 <div class="codewrapper sourceCode" id="cb23">
@@ -1894,7 +1895,7 @@ verify your workflow is working with the changes you’ve made so far.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The full YAML text is</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -2038,7 +2039,7 @@ output directory organization?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Under your current working directory, you should see a directory
 structure created with the following format –
@@ -2249,7 +2250,7 @@ completed?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1">Show me the solution</h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>You’ll likely see output somewhat similar to</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -2325,7 +2326,7 @@ changed?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2">Show me the solution</h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>This time, you should see that the date printed from the login node
 is <em>at least</em> 10 seconds later than the date printed on the batch
@@ -2468,7 +2469,7 @@ add</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3">Show me the solution</h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>Doing a dry run with <code>amdahl.yaml</code> (text below) should
 generate an <code>Amdahl_{Date &amp; time stamp}</code> directory with a
@@ -2619,7 +2620,7 @@ once.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4">Show me the solution</h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Your new directory structure should look something like</p>
 <div class="codewrapper sourceCode" id="cb27">
@@ -2716,7 +2717,7 @@ produced from a previous run of <code>amdahl.yaml</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5">Show me the solution</h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>The resulting JPEG should look something like</p>
 <figure><img src="files/example-scaling-plot.jpg" alt="Scaling study for 95% parallel task" class="figure mx-auto d-block"><div class="figcaption">Scaling study for 95% parallel task</div>
@@ -2808,7 +2809,7 @@ code using [2, 4, 8, 16, 32] tasks</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6">Show me the solution</h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <p>Your YAML file should look something like</p>
 <div class="codewrapper sourceCode" id="cb39">
