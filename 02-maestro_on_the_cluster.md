@@ -63,6 +63,7 @@ walltime includes quotation marks -- `"{Hours}:{Minutes}:{Seconds}"`.
 With these changes, our updated YAML file might look like
 
 ```yml
+---
 description:
     name: Hostnames
     description: Report a node's hostname.
@@ -85,9 +86,9 @@ study:
       run:
           cmd: |
             hostname >> hostname.txt
-      nodes: 1
-      procs: 1
-      walltime: "00:00:30"
+          nodes: 1
+          procs: 1
+          walltime: "00:00:30"
 ```
 
 Note that we left the rule `hostname-login` as is. Because we do not
