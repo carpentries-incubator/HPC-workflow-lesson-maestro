@@ -338,7 +338,7 @@ any links that you are not going to use.
  --></tbody></table><p>
       The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor.
       </p>
-      </section><section id="setup"><p>This tutorial assumes you have access to the LC system <a href="https://hpc.llnl.gov/hardware/compute-platforms/quartz" class="external-link">Quartz</a>
+      </section><section id="setup"><p>This tutorial assumes you have access to the LC system <a href="https://hpc.llnl.gov/hardware/compute-platforms/ruby" class="external-link">Ruby</a>
 (though many examples will reference the system <a href="https://hpc.llnl.gov/hardware/compute-platforms/pascal" class="external-link">Pascal</a>,
 which offers an identical environment).</p>
 <p>If you do not have access to LC systems, you will need to install the
@@ -346,20 +346,26 @@ prerequisites yourself.</p>
 <section id="prerequisites"><h2 class="section-heading">Prerequisites<a class="anchor" aria-label="anchor" href="#prerequisites"></a>
 </h2>
 <hr class="half-width"><ul><li>A python3 environment including
+<ul><li>common libraries:
 <ul><li>sys</li>
 <li>json</li>
 <li>matplotlib</li>
+<li>mpi4py</li>
 <li>numpy</li>
-<li>maestrowf</li>
-<li>amdahl</li>
+</ul></li>
+<li>Maestro and related scripts:
+<ul><li><a href="https://github.com/hpc-carpentry/amdahl" class="external-link">amdahl</a></li>
+<li><a href="https://maestrowf.readthedocs.io/en/latest/" class="external-link">maestrowf</a></li>
+<li><a href="https://yamllint.readthedocs.io/en/stable/" class="external-link">yamllint</a></li>
 </ul></li>
 <li>the script <a href="../files/plot_terse_amdahl_results.py"><code>plot_terse_amdahl_results.py</code></a>
 </li>
+</ul></li>
 </ul><div class="section level3">
 <h3 id="if-on-lc">If on LC<a class="anchor" aria-label="anchor" href="#if-on-lc"></a></h3>
-<p>If you are working on <a href="https://hpc.llnl.gov/hardware/compute-platforms/quartz" class="external-link">Quartz</a>,
-<a href="https://maestrowf.readthedocs.io/en/latest/" class="external-link">Maestro</a> is
-installed to the Python environment with binaries in
+<p>If you are working on <a href="https://hpc.llnl.gov/hardware/compute-platforms/ruby" class="external-link">Ruby</a>, <a href="https://maestrowf.readthedocs.io/en/latest/" class="external-link">Maestro</a> is
+installed to a Python <a href="https://docs.python.org/3/library/venv.html" class="external-link">virtual
+environment</a> with binaries in
 <code>/usr/global/docs/training/janeh/maestro_venv/bin</code>.
 Instructions for how to use these binaries are contained in the
 lesson.</p>
@@ -371,11 +377,77 @@ from GitHub</a>.</p>
 <div class="section level3">
 <h3 id="if-on-your-own">If on your own<a class="anchor" aria-label="anchor" href="#if-on-your-own"></a></h3>
 <p>Some Maestro commands will work locally but others won’t make sense
-unless you’re connected to a cluster with slurm installed. Wherever
-you’re working, you’ll need to install the prerequisite python packages
+unless you’re connected to a cluster with Slurm installed. Wherever
+you’re working, you’ll need to install the prerequisite Python packages
 listed above and download the python plotting script.</p>
+<p>The recommended way to install these packages is inside a Python <a href="https://docs.python.org/3/library/venv.html" class="external-link">virtual
+environment</a>. You create one using the <code>venv</code> module and
+specifying the directory in which your environment will be
+contained:</p>
+<div class="codewrapper sourceCode" id="cb1">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">mkdir</span> ~/venvs</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv ~/venvs/maestro</span></code></pre>
 </div>
-</section><section id="how-to-connect-over-ssh"><h2 class="section-heading">How to connect over ssh<a class="anchor" aria-label="anchor" href="#how-to-connect-over-ssh"></a>
+<p>This should create the folder at <code>~/venvs/maestro</code>,
+containing</p>
+<div class="codewrapper sourceCode" id="cb2">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">ls</span> ~/venvs/maestro</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>bin/  include/  lib/  lib64  pyvenv.cfg</code></pre>
+</div>
+<p>Now you can activate the environment. If your shell is
+<code>bash</code>,</p>
+<div class="codewrapper sourceCode" id="cb4">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="bu">source</span> ~/venvs/maestro/bin/activate</span></code></pre>
+</div>
+<p>Otherwise, use the <code>activate</code> command appropriate for your
+shell. For example,</p>
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="bu">echo</span> <span class="va">$SHELL</span></span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code>/bin/tcsh</code></pre>
+</div>
+<div class="codewrapper sourceCode" id="cb7">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="bu">source</span> ~/venvs/maestro/bin/activate.csh</span></code></pre>
+</div>
+<p>Your terminal prompt should now have a <code>(maestro)</code> prefix,
+indicating that the environment was successfully activated. This
+environment includes <code>pip</code>, a Python package manager. Use it
+to install the required libraries:</p>
+<div class="codewrapper sourceCode" id="cb8">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="ex">pip</span> install amdahl maestrowf yamllint</span></code></pre>
+</div>
+<p>Specifying these three custom libraries should be sufficient: their
+dependencies will be pulled in by <code>pip</code> automagically!</p>
+<p>Finally, copy the <code>plot_terse_amdahl_results.py</code> script
+into your venv’s <code>bin</code> directory and make it executable:</p>
+<div class="codewrapper sourceCode" id="cb9">
+<h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="bu">cd</span> ~/venvs/maestro/bin</span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">wget</span> https://github.com/xorJane/maestro-workflow-lesson/raw/main/episodes/files/plot_terse_amdahl_results.py</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="fu">chmod</span> +x plot_terse_amdahl_results.py</span></code></pre>
+</div>
+</div>
+</section><section id="how-to-connect-over-ssh"><h2 class="section-heading">How to connect over SSH<a class="anchor" aria-label="anchor" href="#how-to-connect-over-ssh"></a>
 </h2>
 <hr class="half-width"><div id="details" class="callout discussion">
 <div class="callout-square">
@@ -385,8 +457,8 @@ listed above and download the python plotting script.</p>
 <h3 class="callout-title">Details<a class="anchor" aria-label="anchor" href="#details"></a>
 </h3>
 <div class="callout-content">
-<p>The application you use to connect to Quartz will depend on the type
-of local machine you’re working on.</p>
+<p>The application you use to connect to Ruby will depend on the type of
+local machine you’re working on.</p>
 </div>
 </div>
 </div>
@@ -396,7 +468,7 @@ of local machine you’re working on.</p>
   <h3 class="accordion-header" id="headingSpoiler1">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Windows</h3>
 </button>
-<div id="collapseSpoiler1" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler1" aria-labelledby="headingSpoiler1">
+<div id="collapseSpoiler1" class="accordion-collapse collapse" aria-labelledby="headingSpoiler1" data-bs-parent="#accordionSpoiler1">
 <div class="accordion-body">
 <p>Use <a href="https://www.starnet.com/xwin32/" class="external-link">XWin32</a> or RealVNC’s
 <a href="https://www.realvnc.com/en/connect/download/viewer/" class="external-link">VNC
@@ -411,7 +483,7 @@ Viewer</a>.</p>
   <h3 class="accordion-header" id="headingSpoiler2">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>MacOS</h3>
 </button>
-<div id="collapseSpoiler2" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler2" aria-labelledby="headingSpoiler2">
+<div id="collapseSpoiler2" class="accordion-collapse collapse" aria-labelledby="headingSpoiler2" data-bs-parent="#accordionSpoiler2">
 <div class="accordion-body">
 <p>Use <a href="https://support.apple.com/guide/terminal/welcome/mac" class="external-link">Terminal.app</a>
 or RealVNC’s <a href="https://www.realvnc.com/en/connect/download/viewer/" class="external-link">VNC
@@ -426,7 +498,7 @@ Viewer</a>.</p>
   <h3 class="accordion-header" id="headingSpoiler3">
 <div class="note-square"><i aria-hidden="true" class="callout-icon" data-feather="eye"></i></div>Linux</h3>
 </button>
-<div id="collapseSpoiler3" class="accordion-collapse collapse" data-bs-parent="#accordionSpoiler3" aria-labelledby="headingSpoiler3">
+<div id="collapseSpoiler3" class="accordion-collapse collapse" aria-labelledby="headingSpoiler3" data-bs-parent="#accordionSpoiler3">
 <div class="accordion-body">
 <p>Use <a href="https://help.ubuntu.com/community/UsingTheTerminal" class="external-link">Terminal</a>
 or RealVNC’s <a href="https://www.realvnc.com/en/connect/download/viewer/" class="external-link">VNC
@@ -489,8 +561,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/hpc-workflows/instructor/index.html",
   "identifier": "https://carpentries-incubator.github.io/hpc-workflows/instructor/index.html",
   "dateCreated": "2024-04-02",
-  "dateModified": "2024-06-04",
-  "datePublished": "2024-06-04"
+  "dateModified": "2024-06-06",
+  "datePublished": "2024-06-06"
 }
 
   </script><script>
