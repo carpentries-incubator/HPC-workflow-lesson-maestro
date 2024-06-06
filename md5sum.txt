@@ -12,5 +12,5 @@
 "episodes/06-multiple-parameters.md" "2499071ce0b3724b9c15f724e3fd0fae" "site/built/06-multiple-parameters.md" "2024-06-04"
 "instructors/instructor-notes.md" "cae72b6712578d74a49fea7513099f8c" "site/built/instructor-notes.md" "2023-03-16"
 "learners/reference.md" "1c7cc4e229304d9806a13f69ca1b8ba4" "site/built/reference.md" "2023-03-16"
-"learners/setup.md" "f0d553a037c63565c49bb0e07d4ecbc1" "site/built/setup.md" "2024-06-04"
+"learners/setup.md" "50f4a728f197c540036215fbee2caf12" "site/built/setup.md" "2024-06-06"
 "profiles/learner-profiles.md" "60b93493cf1da06dfd63255d73854461" "site/built/learner-profiles.md" "2022-04-22"
