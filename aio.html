@@ -43,7 +43,7 @@
             <span class="visually-hidden">This lesson is in the pre-alpha phase, which means that it is in early development, but has not yet been taught.</span>
           </abbr>
         </span>
-        
+
       </div>
     </div>
     <div class="selector-container">
@@ -74,7 +74,7 @@
           </ul>
 </li>
       </div>
-      
+
       <div class="dropdown" id="instructor-dropdown">
         <button class="btn btn-secondary dropdown-toggle bordered-button" type="button" id="dropdownMenu1" data-bs-toggle="dropdown" aria-expanded="false">
           <i aria-hidden="true" class="icon" data-feather="eye"></i> Learner View <i data-feather="chevron-down"></i>
@@ -212,7 +212,7 @@
 <!--div.sidenav-view-selector -->
             </div>
 <!--/div.col -->
-      
+
             <hr>
 </div>
 <!--/div.mobile-row -->
@@ -234,7 +234,7 @@
         <a href="index.html">Summary and Setup</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -246,7 +246,7 @@
         <a href="01-introduction.html">1. Running commands with Maestro</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -258,7 +258,7 @@
         <a href="02-maestro_on_the_cluster.html">2. Running Maestro on the cluster</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -270,7 +270,7 @@
         <a href="03-maestro-and-mpi.html">3. MPI applications and Maestro</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -282,7 +282,7 @@
         <a href="04-placeholders.html">4. Placeholders</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -294,7 +294,7 @@
         <a href="05-chaining_rules.html">5. Chaining rules</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -306,7 +306,7 @@
         <a href="06-multiple-parameters.html">6. Multiple parameters</a>
     </div>
 <!--/div.accordion-header-->
-        
+
   </div>
 <!--/div.accordion-item-->
 </div>
@@ -344,11 +344,11 @@
             </div>
             <hr class="half-width resources">
 <a href="aio.html">See all in one page</a>
-            
+
 
             <hr class="d-none d-sm-block d-md-none">
 <div class="d-grid gap-1">
-            
+
             </div>
           </div>
 <!-- /div.accordion -->
@@ -369,7 +369,7 @@
 <section id="aio-01-introduction"><p>Content from <a href="01-introduction.html">Running commands with Maestro</a></p>
 <hr>
 <p>Last updated on 2024-06-04 |
-        
+
         <a href="https://github.com/carpentries-incubator/hpc-workflows/edit/main/episodes/01-introduction.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -399,7 +399,8 @@
 </div>
 </div>
 </div>
-<section id="what-is-the-workflow-im-interested-in"><h2 class="section-heading">What is the workflow I’m interested in?<a class="anchor" aria-label="anchor" href="#what-is-the-workflow-im-interested-in"></a>
+<section><h2 class="section-heading" id="what-is-the-workflow-im-interested-in">What is the workflow I’m interested in?<a class="anchor" aria-label="anchor" href="#what-is-the-workflow-im-interested-in"></a>
+<a class="anchor" aria-label="anchor" href="#what-is-the-workflow-im-interested-in"></a>
 </h2>
 <hr class="half-width">
 <p>In this lesson we will make an experiment that takes an application
@@ -436,7 +437,8 @@ status of your workflow, so let’s redirect the output to a file:</p>
 </h3>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">janeh@pascal83:~$</span> hostname <span class="op">&gt;</span> hostname_login.txt</span></code></pre>
 </div>
-</section><section id="writing-a-maestro-yaml"><h2 class="section-heading">Writing a Maestro YAML<a class="anchor" aria-label="anchor" href="#writing-a-maestro-yaml"></a>
+</section><section><h2 class="section-heading" id="writing-a-maestro-yaml">Writing a Maestro YAML<a class="anchor" aria-label="anchor" href="#writing-a-maestro-yaml"></a>
+<a class="anchor" aria-label="anchor" href="#writing-a-maestro-yaml"></a>
 </h2>
 <hr class="half-width">
 <p>Edit a new text file named <code>hostname.yaml</code>. The file
@@ -541,7 +543,8 @@ let’s double check</p>
 </div>
 </div>
 </div>
-</section><section id="running-maestro"><h2 class="section-heading">Running maestro<a class="anchor" aria-label="anchor" href="#running-maestro"></a>
+</section><section><h2 class="section-heading" id="running-maestro">Running maestro<a class="anchor" aria-label="anchor" href="#running-maestro"></a>
+<a class="anchor" aria-label="anchor" href="#running-maestro"></a>
 </h2>
 <hr class="half-width">
 <p>Once you have <code>maestro</code> available to you, run
@@ -628,7 +631,7 @@ be written?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <ol start="4" style="list-style-type: decimal">
 <li>hostname_login.txt</li>
@@ -681,7 +684,7 @@ written to
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <ol start="3" style="list-style-type: decimal">
 <li><code>.../MyHello_{date}_{time}/give-salutation/greeting.txt</code></li>
@@ -715,14 +718,14 @@ for each study.</li>
 </div>
 </div>
 </div>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </section></section><section id="aio-02-maestro_on_the_cluster"><p>Content from <a href="02-maestro_on_the_cluster.html">Running Maestro on the cluster</a></p>
 <hr>
 <p>Last updated on 2024-06-06 |
-        
+
         <a href="https://github.com/carpentries-incubator/hpc-workflows/edit/main/episodes/02-maestro_on_the_cluster.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -744,7 +747,8 @@ any links that you are not going to use.
 </div>
 </div>
 </div>
-<section id="how-do-i-run-maestro-on-the-cluster"><h2 class="section-heading">How do I run Maestro on the cluster?<a class="anchor" aria-label="anchor" href="#how-do-i-run-maestro-on-the-cluster"></a>
+<section><h2 class="section-heading" id="how-do-i-run-maestro-on-the-cluster">How do I run Maestro on the cluster?<a class="anchor" aria-label="anchor" href="#how-do-i-run-maestro-on-the-cluster"></a>
+<a class="anchor" aria-label="anchor" href="#how-do-i-run-maestro-on-the-cluster"></a>
 </h2>
 <hr class="half-width">
 <p>What happens when we want to run on the cluster (“to run a batch
@@ -842,7 +846,7 @@ process using the bank <code>guests</code> on the partition
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The contents of <code>hostname.yaml</code> should look something
 like:</p>
@@ -895,7 +899,8 @@ on the system.)</p>
 </div>
 </div>
 </div>
-</section><section id="outputs-from-a-batch-job"><h2 class="section-heading">Outputs from a batch job<a class="anchor" aria-label="anchor" href="#outputs-from-a-batch-job"></a>
+</section><section><h2 class="section-heading" id="outputs-from-a-batch-job">Outputs from a batch job<a class="anchor" aria-label="anchor" href="#outputs-from-a-batch-job"></a>
+<a class="anchor" aria-label="anchor" href="#outputs-from-a-batch-job"></a>
 </h2>
 <hr class="half-width">
 <p>When running in batch, <code>maestro run ...</code> will create a new
@@ -999,14 +1004,14 @@ default.</li>
 </div>
 </div>
 </div>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </section></section><section id="aio-03-maestro-and-mpi"><p>Content from <a href="03-maestro-and-mpi.html">MPI applications and Maestro</a></p>
 <hr>
 <p>Last updated on 2024-06-04 |
-        
+
         <a href="https://github.com/carpentries-incubator/hpc-workflows/edit/main/episodes/03-maestro-and-mpi.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -1099,7 +1104,7 @@ changes as we use more processors.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>You should see output that looks roughly like</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -1154,7 +1159,7 @@ file.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Your YAML file might be named <code>amdahl.yaml</code> and its
 contents might look like</p>
@@ -1200,7 +1205,7 @@ single task is reporting on its work in your output file.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The contents of <code>amdahl.yaml</code> should now look something
 like</p>
@@ -1257,7 +1262,7 @@ work in the output file?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <p>Your YAML files contents are now updated to</p>
 <div class="codewrapper sourceCode" id="cb9">
@@ -1336,7 +1341,8 @@ to tell it so more directly.</p>
 have both parallel resources and a binary/executable/program that is
 enabled to run in parallel. We actually need to invoke MPI in order to
 force our parallel program to use parallel resources.</p>
-<section id="maestro-and-mpi"><h2 class="section-heading">Maestro and MPI<a class="anchor" aria-label="anchor" href="#maestro-and-mpi"></a>
+<section><h2 class="section-heading" id="maestro-and-mpi">Maestro and MPI<a class="anchor" aria-label="anchor" href="#maestro-and-mpi"></a>
+<a class="anchor" aria-label="anchor" href="#maestro-and-mpi"></a>
 </h2>
 <hr class="half-width">
 <p>We didn’t really run an MPI application in the last section as we
@@ -1386,7 +1392,7 @@ script created by Maestro (included in the same subdirectory as
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <p>The updated YAML should look something like</p>
 <div class="codewrapper sourceCode" id="cb14">
@@ -1439,7 +1445,8 @@ more readable, and this is just as true with our YAML files.</p>
 </div>
 </div>
 </div>
-</section><section id="customizing-amdahl-output"><h2 class="section-heading">Customizing amdahl output<a class="anchor" aria-label="anchor" href="#customizing-amdahl-output"></a>
+</section><section><h2 class="section-heading" id="customizing-amdahl-output">Customizing amdahl output<a class="anchor" aria-label="anchor" href="#customizing-amdahl-output"></a>
+<a class="anchor" aria-label="anchor" href="#customizing-amdahl-output"></a>
 </h2>
 <hr class="half-width">
 <p>Another thing about our application <code>amdahl</code> is that we
@@ -1548,7 +1555,7 @@ script is working.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">YML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1579,7 +1586,8 @@ script is working.</p>
 </div>
 </div>
 </div>
-</section><section id="environment-variables"><h2 class="section-heading">Environment variables<a class="anchor" aria-label="anchor" href="#environment-variables"></a>
+</section><section><h2 class="section-heading" id="environment-variables">Environment variables<a class="anchor" aria-label="anchor" href="#environment-variables"></a>
+<a class="anchor" aria-label="anchor" href="#environment-variables"></a>
 </h2>
 <hr class="half-width">
 <p>Our current directory is probably starting to fill up with
@@ -1620,7 +1628,7 @@ above).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">YML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1655,7 +1663,8 @@ above).</p>
 </div>
 </div>
 </div>
-</section><section id="dry-run---dry-mode"><h2 class="section-heading">Dry-run (<code>--dry</code>) mode<a class="anchor" aria-label="anchor" href="#dry-run---dry-mode"></a>
+</section><section><h2 class="section-heading" id="dry-run---dry-mode">Dry-run (<code>--dry</code>) mode<a class="anchor" aria-label="anchor" href="#dry-run---dry-mode"></a>
+<a class="anchor" aria-label="anchor" href="#dry-run---dry-mode"></a>
 </h2>
 <hr class="half-width">
 <p>It’s often useful to run Maestro in <code>--dry</code> mode, which
@@ -1690,7 +1699,7 @@ Instead, you just run</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8"> Show me the solution </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
 <div class="accordion-body">
 <p>After running</p>
 <div class="codewrapper sourceCode" id="cb23">
@@ -1723,14 +1732,14 @@ structure and scripts are created by a given Maestro YAML file.</li>
 </div>
 </div>
 </div>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </section></section><section id="aio-04-placeholders"><p>Content from <a href="04-placeholders.html">Placeholders</a></p>
 <hr>
 <p>Last updated on 2024-06-04 |
-        
+
         <a href="https://github.com/carpentries-incubator/hpc-workflows/edit/main/episodes/04-placeholders.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -1778,7 +1787,8 @@ any links that you are not going to use.
 </div>
 </div>
 </div>
-<section id="d.r.y.-dont-repeat-yourself"><h2 class="section-heading">D.R.Y. (Don’t Repeat Yourself)<a class="anchor" aria-label="anchor" href="#d.r.y.-dont-repeat-yourself"></a>
+<section><h2 class="section-heading" id="d-r-y--dont-repeat-yourself">D.R.Y. (Don’t Repeat Yourself)<a class="anchor" aria-label="anchor" href="#d.r.y.-dont-repeat-yourself"></a>
+<a class="anchor" aria-label="anchor" href="#d-r-y--dont-repeat-yourself"></a>
 </h2>
 <hr class="half-width">
 <div id="callout2" class="callout">
@@ -1805,7 +1815,8 @@ but forget to rename it elsewhere).</p>
 <p>In this episode, we’ll set ourselves up with ways to avoid repeating
 ourselves by using <em>environment variables</em> as
 <em>placeholders</em>.</p>
-</section><section id="placeholders"><h2 class="section-heading">Placeholders<a class="anchor" aria-label="anchor" href="#placeholders"></a>
+</section><section><h2 class="section-heading" id="placeholders">Placeholders<a class="anchor" aria-label="anchor" href="#placeholders"></a>
+<a class="anchor" aria-label="anchor" href="#placeholders"></a>
 </h2>
 <hr class="half-width">
 <p>Over the course of this lesson, we want to use the
@@ -1953,7 +1964,7 @@ verify your workflow is working with the changes you’ve made so far.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The full YAML text is</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -1998,7 +2009,8 @@ verify your workflow is working with the changes you’ve made so far.</p>
 </div>
 </div>
 </div>
-</section><section id="maestros-global.parameters"><h2 class="section-heading">Maestro’s global.parameters<a class="anchor" aria-label="anchor" href="#maestros-global.parameters"></a>
+</section><section><h2 class="section-heading" id="maestros-global-parameters">Maestro’s global.parameters<a class="anchor" aria-label="anchor" href="#maestros-global.parameters"></a>
+<a class="anchor" aria-label="anchor" href="#maestros-global-parameters"></a>
 </h2>
 <hr class="half-width">
 <p>We’re almost ready to perform our scaling study – to see how the
@@ -2097,7 +2109,7 @@ output directory organization?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Under your current working directory, you should see a directory
 structure created with the following format –
@@ -2157,14 +2169,14 @@ lists of values and labels.</li>
 </div>
 </div>
 </div>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </section></section><section id="aio-05-chaining_rules"><p>Content from <a href="05-chaining_rules.html">Chaining rules</a></p>
 <hr>
 <p>Last updated on 2024-06-04 |
-        
+
         <a href="https://github.com/carpentries-incubator/hpc-workflows/edit/main/episodes/05-chaining_rules.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -2214,7 +2226,8 @@ step?</li>
 </div>
 </div>
 </div>
-<section id="a-pipeline-of-multiple-rules"><h2 class="section-heading">A pipeline of multiple rules<a class="anchor" aria-label="anchor" href="#a-pipeline-of-multiple-rules"></a>
+<section><h2 class="section-heading" id="a-pipeline-of-multiple-rules">A pipeline of multiple rules<a class="anchor" aria-label="anchor" href="#a-pipeline-of-multiple-rules"></a>
+<a class="anchor" aria-label="anchor" href="#a-pipeline-of-multiple-rules"></a>
 </h2>
 <hr class="half-width">
 <p>In this episode, we will plot the scaling results generated in the
@@ -2428,7 +2441,8 @@ jobs.</p>
 </div>
 </div>
 </div>
-</section><section id="a-step-that-waits-for-all-iterations-of-its-dependency"><h2 class="section-heading">A step that waits for all iterations of its dependency<a class="anchor" aria-label="anchor" href="#a-step-that-waits-for-all-iterations-of-its-dependency"></a>
+</section><section><h2 class="section-heading" id="a-step-that-waits-for-all-iterations-of-its-dependency">A step that waits for all iterations of its dependency<a class="anchor" aria-label="anchor" href="#a-step-that-waits-for-all-iterations-of-its-dependency"></a>
+<a class="anchor" aria-label="anchor" href="#a-step-that-waits-for-all-iterations-of-its-dependency"></a>
 </h2>
 <hr class="half-width">
 <p>Let’s return to our Amdahl scaling study and the YAML with which we
@@ -2708,7 +2722,8 @@ subdirectories.</p>
 </div>
 </div>
 </div>
-</section><section id="using-the-outputs-from-a-previous-step"><h2 class="section-heading">Using the outputs from a previous step<a class="anchor" aria-label="anchor" href="#using-the-outputs-from-a-previous-step"></a>
+</section><section><h2 class="section-heading" id="using-the-outputs-from-a-previous-step">Using the outputs from a previous step<a class="anchor" aria-label="anchor" href="#using-the-outputs-from-a-previous-step"></a>
+<a class="anchor" aria-label="anchor" href="#using-the-outputs-from-a-previous-step"></a>
 </h2>
 <hr class="half-width">
 <div class="section level3">
@@ -2953,15 +2968,15 @@ for parameterized steps.</li>
 </div>
 </div>
 </div>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </div>
 </section></section><section id="aio-06-multiple-parameters"><p>Content from <a href="06-multiple-parameters.html">Multiple parameters</a></p>
 <hr>
 <p>Last updated on 2024-06-04 |
-        
+
         <a href="https://github.com/carpentries-incubator/hpc-workflows/edit/main/episodes/06-multiple-parameters.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
           <button role="button" aria-pressed="false" tabindex="0" id="expand-code" class="pull-right" data-expand="Expand All Solutions " data-collapse="Collapse All Solutions "> Expand All Solutions <i aria-hidden="true" data-feather="plus"></i></button>
@@ -3012,7 +3027,8 @@ amounts of parallel work.</li>
 </div>
 </div>
 </div>
-<section id="adding-a-second-parameter"><h2 class="section-heading">Adding a second parameter<a class="anchor" aria-label="anchor" href="#adding-a-second-parameter"></a>
+<section><h2 class="section-heading" id="adding-a-second-parameter">Adding a second parameter<a class="anchor" aria-label="anchor" href="#adding-a-second-parameter"></a>
+<a class="anchor" aria-label="anchor" href="#adding-a-second-parameter"></a>
 </h2>
 <hr class="half-width">
 <p>In this episode, we want to vary <code>P</code>, the fraction of
@@ -3354,9 +3370,9 @@ are used in a single job.”</li>
 </div>
 </div>
 </div>
-<!-- 
+<!--
 Place links that you need to refer to multiple times across pages here. Delete
-any links that you are not going to use. 
+any links that you are not going to use.
  -->
 </section></section>
 </div>
@@ -3370,18 +3386,18 @@ any links that you are not going to use.
 <div class="col-md-6">
         <p>This lesson is subject to the <a href="CODE_OF_CONDUCT.html">Code of Conduct</a></p>
         <p>
-        
+
         <a href="https://github.com/carpentries-incubator/hpc-workflows/edit/main/README.md" class="external-link">Edit on GitHub</a>
-        
+
 	
         | <a href="https://github.com/carpentries-incubator/hpc-workflows/blob/main/CONTRIBUTING.md" class="external-link">Contributing</a>
         | <a href="https://github.com/carpentries-incubator/hpc-workflows/" class="external-link">Source</a></p>
 				<p><a href="https://github.com/carpentries-incubator/hpc-workflows/blob/main/CITATION" class="external-link">Cite</a> | <a href="mailto:maintainers-hpc@lists.carpentries.org">Contact</a> | <a href="https://carpentries.org/about/" class="external-link">About</a></p>
 			</div>
 			<div class="col-md-6">
-        
+
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
-        
+
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
 			</div>
@@ -3406,8 +3422,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/hpc-workflows/aio.html",
   "identifier": "https://carpentries-incubator.github.io/hpc-workflows/aio.html",
   "dateCreated": "2024-04-02",
-  "dateModified": "2024-07-02",
-  "datePublished": "2024-07-02"
+  "dateModified": "2024-07-09",
+  "datePublished": "2024-07-09"
 }
 
   </script><script>
