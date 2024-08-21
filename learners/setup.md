@@ -2,15 +2,15 @@
 title: Setup
 ---
 
-This tutorial assumes you have access to the LC system [Ruby][ruby] (though
-many examples will reference the system [Pascal][pascal], which offers an
-identical environment).
+Tutorial exercises and examples refer to two systems called [Ruby][ruby]
+and [Pascal][pascal], which offer identical environments.
 
-If you do not have access to LC systems, you will need to install the
+If you are working on a different cluster, you will need to install the
 prerequisites yourself.
 
 ## Prerequisites
 
+* A cluster running Slurm
 * A python3 environment including
   * common libraries:
     * sys
@@ -24,18 +24,18 @@ prerequisites yourself.
     * [yamllint](https://yamllint.readthedocs.io/en/stable/)
   * the script [`plot_terse_amdahl_results.py`](files/plot_terse_amdahl_results.py)
 
-### If on LC
+::::::::::::::::::::::::::::::::::::::: discussion
 
-If you are working on [Ruby][ruby], [Maestro][maestro] is installed to
-a Python [virtual environment][venv] with binaries in
-`/usr/global/docs/training/janeh/maestro_venv/bin`. Instructions for
-how to use these binaries are contained in the lesson.
+### Setting up your environment
 
-You will need the python script at
-`/usr/global/docs/training/janeh/maestro_venv/plot_terse_amdahl_results.py`
-or [directly from GitHub][plot_script].
+How you set up your environment with the prerequisites will
+depend on where you are running this tutorial.
 
-### If on your own
+:::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::: spoiler
+
+### If on your own cluster
 
 Some Maestro commands will work locally but others won't make sense unless
 you're connected to a cluster with Slurm installed. Wherever you're working,
@@ -51,23 +51,6 @@ contained:
 mkdir ~/venvs
 python3 -m venv ~/venvs/maestro
 ```
-
-<details>
-<summary>
- 
-(Click the arrow for a note to LC users trying to build their own virtual
-environments with Maestro)
- 
-</summary>
-We recommend that LC users add the flag `--system-site-packages` when
-creating a virtual environment:
- 
-``` bash
-mkdir ~/venvs
-python3 -m venv --system-site-packages ~/venvs/maestro
-```
-
-</details>
 
 This should create the folder at `~/venvs/maestro`, containing
 
@@ -121,13 +104,43 @@ wget https://github.com/xorJane/maestro-workflow-lesson/raw/main/episodes/files/
 chmod +x plot_terse_amdahl_results.py
 ```
 
+
+::::::::::::::::::::::::
+
+:::::::::::::::: spoiler
+
+### If on Ruby/Pascal
+
+If you are working on [Ruby][ruby], [Maestro][maestro] is installed to
+a Python [virtual environment][venv] with binaries in
+`/usr/global/docs/training/janeh/maestro_venv/bin`. Instructions for
+how to use these binaries are contained in the lesson.
+
+You will need the python script at
+`/usr/global/docs/training/janeh/maestro_venv/plot_terse_amdahl_results.py`
+or [directly from GitHub][plot_script].
+
+If you are on LC and trying to set up a virtual environment on your own,
+follow the instructions for "If on your own cluster", but add the flag
+`--system-site-packages` when creating a virtual environment:
+ 
+``` bash
+mkdir ~/venvs
+python3 -m venv --system-site-packages ~/venvs/maestro
+```
+
+::::::::::::::::::::::::
+
+
+
+
 ## How to connect over SSH
 
 ::::::::::::::::::::::::::::::::::::::: discussion
 
 ### Details
 
-The application you use to connect to Ruby will depend on the
+The application you use to connect to your cluster will depend on the
 type of local machine you're working on.
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -136,7 +149,7 @@ type of local machine you're working on.
 
 ### Windows
 
-Use [XWin32][xwin] or RealVNC's [VNC Viewer][rvnc].
+We recommend using Git BASH via [git for windows](gitBASH)
 
 ::::::::::::::::::::::::
 
@@ -144,7 +157,7 @@ Use [XWin32][xwin] or RealVNC's [VNC Viewer][rvnc].
 
 ### MacOS
 
-Use [Terminal.app][tapp] or RealVNC's [VNC Viewer][rvnc].
+Use [Terminal.app][tapp] or similar.
 
 ::::::::::::::::::::::::
 
@@ -152,17 +165,16 @@ Use [Terminal.app][tapp] or RealVNC's [VNC Viewer][rvnc].
 
 ### Linux
 
-Use [Terminal][term] or RealVNC's [VNC Viewer][rvnc].
+Use [Terminal][term] or similar.
 
 ::::::::::::::::::::::::
 
 <!-- links -->
+[gitBASH]: https://gitforwindows.org/
 [maestro]: https://maestrowf.readthedocs.io/en/latest/
 [pascal]: https://hpc.llnl.gov/hardware/compute-platforms/pascal
 [plot_script]: https://github.com/carpentries-incubator/hpc-workflows/raw/main/episodes/files/plot_terse_amdahl_results.py
 [ruby]: https://hpc.llnl.gov/hardware/compute-platforms/ruby
-[rvnc]: https://www.realvnc.com/en/connect/download/viewer/
 [tapp]: https://support.apple.com/guide/terminal/welcome/mac
 [term]: https://help.ubuntu.com/community/UsingTheTerminal
 [venv]: https://docs.python.org/3/library/venv.html
-[xwin]: https://www.starnet.com/xwin32/
