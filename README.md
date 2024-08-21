@@ -1,72 +1,79 @@
-# The Carpentries Workbench Template Markdown Lesson
+# HPC Workflow Management with Maestro
 
-This lesson is a template lesson that uses [The Carpentries Workbench][workbench]. 
+## The lesson
 
-## Note about lesson life cycle stage
-Although the `config.yaml` states the life cycle stage as pre-alpha, **the template is stable and ready to use**. The life cycle stage is preset to `"pre-alpha"` as this setting is appropriate for new lessons initialised using the template.
+"HPC Workflow Management with Maestro" was written to follow HPC Carpentry's 
+[HPC Intro](https://carpentries-incubator.github.io/hpc-intro/), where learners got hands-on
+experience working with Slurm and running a parallel program called
+[`amdahl`](https://github.com/hpc-carpentry/amdahl). In this lesson, learners will see how
+workflow management tools (here, `maestro`) can automate the user's job submission processes,
+leaving behind a record of how and when the user's work was completed for better documentation
+and reproducibility.
 
-## Create a new repository from this template
+This lesson was originally ported to `maestro` from HPC Carpentry's 
+[workflow lesson with snakemake](https://carpentries-incubator.github.io/hpc-workflows/) for a
+[workshop](https://www.hpc-carpentry.org/blog/2024/08/llnl-workshop-blog-post.html) at
+Lawrence Livermore National Lab.
 
-To use this template to start a new lesson repository, 
-make sure you're logged into Github.   
-Visit https://github.com/carpentries/workbench-template-md/generate
-and follow the instructions.
-Checking the 'Include all branches' option will save some time waiting for the first website build
-when your new repository is initialised.
+## About Maestro
 
-If you have any questions, contact [@tobyhodges](https://github.com/tobyhodges)
+From Maestro's [documentation](https://maestrowf.readthedocs.io/en/latest/) and [GitHub](https://github.com/LLNL/maestrowf):
 
-## Configure a new lesson
+> Maestro  is an open-source HPC software tool that defines a YAML-based study specification for
+> defining multistep workflows and automates execution of software flows on HPC resources. The
+> core design tenants of Maestro focus on encouraging clear workflow communication and documentation,
+> while making consistent execution easier to allow users to focus on science. 
+>
+> Maestro gives an easy path to automating and orchestrating your workflows, building upon
+> your existing shell and batch (HPC scheduled scripts/tasks) script tasks to layer on
+> parameterization, task dependencies, and output isolation. Additionally, Maestro's workflow
+> specification layer enables documenting those scripts and their interdependencies if chaining
+> them together, and makes them more repeatable and shareable for enhanced collaboration with
+> your peers.
 
-Follow the steps below to
-complete the initial configuration of a new lesson repository built from this template:
+You can learn more about other workflow tools [here](https://workflows.community/systems).
 
-1. **Make sure GitHub Pages is activated:**
-   navigate to _Settings_,
-   select _Pages_ from the left sidebar,
-   and make sure that `gh-pages` is selected as the branch to build from.
-   If no `gh-pages` branch is available, check _Actions_ to see if the first
-   website build workflows are still running.
-   The branch should become available when those have completed.
-1. **Adjust the `config.yaml` file:**
-   this file contains global parameters for your lesson site.
-   Individual fields within the file are documented with comments (beginning with `#`)
-   At minimum, you should adjust all the fields marked 'FIXME':
-   - `title`
-   - `created`
-   - `keywords`
-   - `life_cycle` (the default, _pre-alpha_, is the appropriate for brand new lessons)
-   - `contact`
-1. **Annotate the repository** with site URL and topic tags:
-   navigate back to the repository landing page and
-   click on the gear wheel/cog icon (similar to ⚙️) 
-   at the top-right of the _About_ box.
-   Check the "Use your GitHub Pages website" option,
-   and [add some keywords and other annotations to describe your lesson](https://cdh.carpentries.org/the-carpentries-incubator.html#topic-tags)
-   in the _Topics_ field.
-   At minimum, these should include:
-   - `lesson`
-   - the life cycle of the lesson (e.g. `pre-alpha`)
-   - the human language the lesson is written in (e.g. `deutsch`)
-1. **Adjust the 
-   `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, and `LICENSE.md` files**
-   as appropriate for your project.
-   -  `CODE_OF_CONDUCT.md`: 
-      if you are using this template for a project outside The Carpentries,
-      you should adjust this file to describe 
-      who should be contacted with Code of Conduct reports,
-      and how those reports will be handled.
-   -  `CONTRIBUTING.md`:
-      depending on the current state and maturity of your project,
-      the contents of the template Contributing Guide may not be appropriate.
-      You should adjust the file to help guide contributors on how best
-      to get involved and make an impact on your lesson.
-   -  `LICENSE.md`:
-      in line with the terms of the CC-BY license,
-      you should ensure that the copyright information 
-      provided in the license file is accurate for your project.
-1. **Update this README with 
-   [relevant information about your lesson](https://carpentries.github.io/lesson-development-training/collaborating-newcomers.html#readme)**
-   and delete this section.
+## Building these pages locally
 
-[workbench]: https://carpentries.github.io/sandpaper-docs/
+These lesson pages are built using the Carpentries Workbench, powered by the R package and
+static website generator [sandpaper](https://carpentries.github.io/sandpaper-docs/). You can
+install sandpaper and render these pages locally with the following instructions.
+
+1. Install R & RStudio [here](https://posit.co/download/rstudio-desktop/#download).
+Rstudio includes `pandoc` another requirement for building these docs.
+
+2. In RStudio's console, run
+
+```
+# register the repositories for The Carpentries and CRAN
+options(repos = c(
+  carpentries = "https://carpentries.r-universe.dev/",
+  CRAN = "https://cran.rstudio.com/"
+))
+
+# Install the template packages to your R library
+install.packages(c("sandpaper", "varnish", "pegboard", "tinkr"))
+```
+
+3. From RStudio, use the menu to change your working directory
+to your local/cloned copy of this repo via 
+**Session > Set Working Directory > Choose Directory**.
+
+4. In RStudio's console, run
+
+```
+library("sandpaper")
+sandpaper::serve()
+```
+
+5. Copy `http://127.0.0.1:4321` from the output printed to
+RStudio's console and paste it into the browser. Your rendered
+docs should be visible from there!
+
+
+For more info, see https://carpentries.github.io/sandpaper-docs/
+
+## Contributing
+
+Contributions to this lesson are welcome! Before submitting a PR, please build the web pages
+locally and check that they build correctly with your changes. 
