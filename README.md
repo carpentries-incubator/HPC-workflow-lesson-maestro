@@ -3,12 +3,12 @@
 ## The lesson
 
 "HPC Workflow Management with Maestro" was written to follow HPC Carpentry's 
-[HPC Intro](https://carpentries-incubator.github.io/hpc-intro/), where learners got hands-on
+[HPC Intro](https://carpentries-incubator.github.io/hpc-intro/), where learners get hands-on
 experience working with Slurm and running a parallel program called
 [`amdahl`](https://github.com/hpc-carpentry/amdahl). In this lesson, learners will see how
 workflow management tools (here, `maestro`) can automate the user's job submission processes,
-leaving behind a record of how and when the user's work was completed for better documentation
-and reproducibility.
+leaving behind a record of how and when the user's work was completed. This automation and
+record making helps users to document and reproduce their workflows.
 
 This lesson was originally ported to `maestro` from HPC Carpentry's 
 [workflow lesson with snakemake](https://carpentries-incubator.github.io/hpc-workflows/) for a
