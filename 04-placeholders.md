@@ -174,6 +174,12 @@ tad bit more efficient. Note that we had already been using a
 placeholder given to us by Maestro: $(LAUNCHER) holds the place of a
 call to `srun <insert resource requests>`.
 
+::: callout
+Note that in the context of Maestro, the general term for the
+"placeholders" declared in the `env` block are
+["tokens"](https://maestrowf.readthedocs.io/en/latest/Maestro/specification.html#environment-tokens).
+:::
+
 ::: challenge
 
 Run your updated `amdahl.yaml` and check results, to verify your
