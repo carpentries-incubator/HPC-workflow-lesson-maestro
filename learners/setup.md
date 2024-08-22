@@ -149,7 +149,7 @@ type of local machine you're working on.
 
 ### Windows
 
-We recommend using Git BASH via [git for windows](gitBASH)
+We recommend using Git BASH via [git for windows](https://gitforwindows.org/).
 
 ::::::::::::::::::::::::
 
@@ -170,7 +170,6 @@ Use [Terminal][term] or similar.
 ::::::::::::::::::::::::
 
 <!-- links -->
-[gitBASH]: https://gitforwindows.org/
 [maestro]: https://maestrowf.readthedocs.io/en/latest/
 [pascal]: https://hpc.llnl.gov/hardware/compute-platforms/pascal
 [plot_script]: https://github.com/carpentries-incubator/hpc-workflows/raw/main/episodes/files/plot_terse_amdahl_results.py

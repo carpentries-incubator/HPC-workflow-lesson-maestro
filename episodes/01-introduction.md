@@ -257,6 +257,31 @@ the `study`; here, that's `give-salutation`. The file created is
 ::::::
 :::
 
+::: callout
+
+After running a workflow with Maestro, you can check the status via
+`maestro status --disable-theme <directory name>`. For example, for
+the directory `Hostnames_20240821-165341` created via `maestro run hostnames.yaml`:
+
+```bash
+maestro status --disable-theme Hostnames_20240821-165341
+```
+
+```output
+                               Study: /usr/WS1/janeh/maestro-tut/Hostnames_20240821-165341
+┏━━━━━━━━━━━━┳━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━┓
+┃            ┃         ┃           ┃          ┃            ┃ Elapsed   ┃            ┃ Submit    ┃            ┃ Number    ┃
+┃ Step Name  ┃ Job ID  ┃ Workspace ┃ State    ┃ Run Time   ┃ Time      ┃ Start Time ┃ Time      ┃ End Time   ┃ Restarts  ┃
+┡━━━━━━━━━━━━╇━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━┩
+│ hostname-l │ 2593210 │ hostname- │ FINISHED │ 0d:00h:00m │ 0d:00h:00 │ 2024-08-21 │ 2024-08-2 │ 2024-08-21 │ 0         │
+│ ogin       │         │ login     │          │ :01s       │ m:01s     │ 16:53:44   │ 1         │ 16:53:45   │           │
+│            │         │           │          │            │           │            │ 16:53:44  │            │           │
+└────────────┴─────────┴───────────┴──────────┴────────────┴───────────┴────────────┴───────────┴────────────┴───────────┘
+(END)
+```
+
+:::
+
 ::: keypoints
 
 - You execute `maestro run` with a YAML file including information
@@ -265,5 +290,6 @@ the `study`; here, that's `give-salutation`. The file created is
   your run).
 - Your maestro run creates a directory with subdirectories and
   outputs for each study.
+- Check the status of a run via `maestro status --disable-theme <directory>`
 
 :::
