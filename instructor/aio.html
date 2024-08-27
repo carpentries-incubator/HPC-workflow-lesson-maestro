@@ -318,10 +318,10 @@
             </div>
 
             <hr class="half-width">
-<div class="accordion accordion-flush resources" id="accordionFlush12">
+<div class="accordion accordion-flush lesson-resources" id="accordionFlush12">
               <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingTwelve">
-                  <button class="accordion-button collapsed" id="resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
+                  <button class="accordion-button collapsed" id="lesson-resources" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwelve" aria-expanded="false" aria-controls="flush-collapseTwelve">
                     RESOURCES
                   </button>
                 </h2>
@@ -344,7 +344,7 @@
                 </div>
               </div>
             </div>
-            <hr class="half-width resources">
+            <hr class="half-width lesson-resources">
 <a href="../instructor/aio.html">See all in one page</a>
 
 
@@ -403,7 +403,6 @@
 </div>
 </div>
 <section><h2 class="section-heading" id="what-is-the-workflow-im-interested-in">What is the workflow I’m interested in?<a class="anchor" aria-label="anchor" href="#what-is-the-workflow-im-interested-in"></a>
-<a class="anchor" aria-label="anchor" href="#what-is-the-workflow-im-interested-in"></a>
 </h2>
 <hr class="half-width">
 <p>In this lesson we will make an experiment that takes an application
@@ -441,7 +440,6 @@ status of your workflow, so let’s redirect the output to a file:</p>
 <pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="ex">janeh@pascal83:~$</span> hostname <span class="op">&gt;</span> hostname_login.txt</span></code></pre>
 </div>
 </section><section><h2 class="section-heading" id="writing-a-maestro-yaml">Writing a Maestro YAML<a class="anchor" aria-label="anchor" href="#writing-a-maestro-yaml"></a>
-<a class="anchor" aria-label="anchor" href="#writing-a-maestro-yaml"></a>
 </h2>
 <hr class="half-width">
 <p>Edit a new text file named <code>hostname.yaml</code>. The file
@@ -468,8 +466,7 @@ key-value data serialization. For more, see the Wikipedia page, esp. <a href="h
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="key-points-about-this-file" class="callout-inner">
-<h3 class="callout-title">Key points about this file<a class="anchor" aria-label="anchor" href="#key-points-about-this-file"></a>
-</h3>
+<h3 class="callout-title">Key points about this file</h3>
 <div class="callout-content">
 <ol style="list-style-type: decimal">
 <li>The name of <code>hostname.yaml</code> is not very important; it
@@ -509,9 +506,7 @@ inconsistent.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="bash-maestro-command-not-found..." class="callout-inner">
-<h3 class="callout-title">
-<code>bash: maestro: command not found...</code><a class="anchor" aria-label="anchor" href="#bash-maestro-command-not-found..."></a>
-</h3>
+<h3 class="callout-title"><code>bash: maestro: command not found...</code></h3>
 <div class="callout-content">
 <p>If your shell tells you that it cannot find the command
 <code>maestro</code> then we need to make the software available
@@ -547,7 +542,6 @@ let’s double check</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="running-maestro">Running maestro<a class="anchor" aria-label="anchor" href="#running-maestro"></a>
-<a class="anchor" aria-label="anchor" href="#running-maestro"></a>
 </h2>
 <hr class="half-width">
 <p>Once you have <code>maestro</code> available to you, run
@@ -615,8 +609,7 @@ hostname-login  Hostnames.study.pkl  hostname.yaml  meta</code></pre>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge1"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>To which file will the login node’s hostname, <code>pascal83</code>,
 be written?</p>
@@ -652,8 +645,7 @@ output, if the run worked!</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge2"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>This one is tricky! In the example above, <code>pascal83</code> was
 written to
@@ -707,8 +699,7 @@ subdirectory is named after the <code>study</code>; here, that’s
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout3"></a>
-</h3>
+<h3 class="callout-title">Callout</h3>
 <div class="callout-content">
 <p>After running a workflow with Maestro, you can check the status via
 <code>maestro status --disable-theme &lt;directory name&gt;</code>. For
@@ -741,8 +732,7 @@ created via <code>maestro run hostnames.yaml</code>:</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
-</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul>
 <li>You execute <code>maestro run</code> with a YAML file including
@@ -776,8 +766,7 @@ any links that you are not going to use.
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
-</h3>
+<h3 class="callout-title">Callout</h3>
 <div class="callout-content">
 <p>If you’ve opened a new terminal, make sure Maestro is available.</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -789,7 +778,6 @@ any links that you are not going to use.
 </div>
 </div>
 <section><h2 class="section-heading" id="how-do-i-run-maestro-on-the-cluster">How do I run Maestro on the cluster?<a class="anchor" aria-label="anchor" href="#how-do-i-run-maestro-on-the-cluster"></a>
-<a class="anchor" aria-label="anchor" href="#how-do-i-run-maestro-on-the-cluster"></a>
 </h2>
 <hr class="half-width">
 <p>What happens when we want to run on the cluster (“to run a batch
@@ -870,8 +858,7 @@ will continue running on the login node and only
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div id="running-on-the-cluster" class="callout-inner">
-<h3 class="callout-title">Running on the cluster<a class="anchor" aria-label="anchor" href="#running-on-the-cluster"></a>
-</h3>
+<h3 class="callout-title">Running on the cluster</h3>
 <div class="callout-content">
 <p>Modify your YAML file, <code>hostname.yaml</code> to execute
 <code>hostname</code> on the <em>cluster</em>. Run with 1 node and 1
@@ -941,7 +928,6 @@ on the system.)</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="outputs-from-a-batch-job">Outputs from a batch job<a class="anchor" aria-label="anchor" href="#outputs-from-a-batch-job"></a>
-<a class="anchor" aria-label="anchor" href="#outputs-from-a-batch-job"></a>
 </h2>
 <hr class="half-width">
 <p>When running in batch, <code>maestro run ...</code> will create a new
@@ -1031,8 +1017,7 @@ Study launched successfully.</code></pre>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
-</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul>
 <li>You can run on the cluster by including info for Slurm in your
@@ -1088,8 +1073,7 @@ any links that you are not going to use.
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
-</h3>
+<h3 class="callout-title">Callout</h3>
 <div class="callout-content">
 <p>If you’ve opened a new terminal, make sure Maestro is available.</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -1127,8 +1111,7 @@ changes as we use more processors.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge1"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Without using maestro, simply run amdahl on your login node by typing
 <code>amdahl</code> on the command line and hitting enter.</p>
@@ -1146,7 +1129,7 @@ changes as we use more processors.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>You should see output that looks roughly like</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -1187,8 +1170,7 @@ behaves when run on the login node. In the next challenge, let’s get
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge2"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Using what you learned in episode 1, create a Maestro YAML file that
 runs <code>amdahl</code> on the login node and captures the output in a
@@ -1201,7 +1183,7 @@ file.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>Your YAML file might be named <code>amdahl.yaml</code> and its
 contents might look like</p>
@@ -1231,8 +1213,7 @@ node.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge3"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Update <code>amdahl.yaml</code> from the last challenge so that this
 workflow runs on a compute node with a single task. Use the examples
@@ -1247,7 +1228,7 @@ single task is reporting on its work in your output file.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The contents of <code>amdahl.yaml</code> should now look something
 like</p>
@@ -1288,8 +1269,7 @@ should help you to remember what this file and its study are doing.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge4"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>After checking that <code>amdahl.yaml</code> looks similar to the
 solution above, update the number of <code>nodes</code> and
@@ -1304,7 +1284,7 @@ work in the output file?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Your YAML files contents are now updated to</p>
 <div class="codewrapper sourceCode" id="cb9">
@@ -1384,7 +1364,6 @@ have both parallel resources and a binary/executable/program that is
 enabled to run in parallel. We actually need to invoke MPI in order to
 force our parallel program to use parallel resources.</p>
 <section><h2 class="section-heading" id="maestro-and-mpi">Maestro and MPI<a class="anchor" aria-label="anchor" href="#maestro-and-mpi"></a>
-<a class="anchor" aria-label="anchor" href="#maestro-and-mpi"></a>
 </h2>
 <hr class="half-width">
 <p>We didn’t really run an MPI application in the last section as we
@@ -1410,8 +1389,7 @@ many nodes and processes we’ve already told Slurm we want to use.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge5"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Update <code>amdahl.yaml</code> to include <code>$(LAUNCHER)</code>
 in the call to <code>amdahl</code> so that your study’s <code>cmd</code>
@@ -1434,7 +1412,7 @@ script created by Maestro (included in the same subdirectory as
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>The updated YAML should look something like</p>
 <div class="codewrapper sourceCode" id="cb14">
@@ -1477,8 +1455,7 @@ Maestro substituted <code>srun -n 2 -N 2</code> for
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="commenting-maestro-yaml-files" class="callout-inner">
-<h3 class="callout-title">Commenting Maestro YAML files<a class="anchor" aria-label="anchor" href="#commenting-maestro-yaml-files"></a>
-</h3>
+<h3 class="callout-title">Commenting Maestro YAML files</h3>
 <div class="callout-content">
 <p>In the solution from the last challenge, the line beginning
 <code>#</code> is a comment line. Hopefully you are already in the habit
@@ -1488,7 +1465,6 @@ more readable, and this is just as true with our YAML files.</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="customizing-amdahl-output">Customizing amdahl output<a class="anchor" aria-label="anchor" href="#customizing-amdahl-output"></a>
-<a class="anchor" aria-label="anchor" href="#customizing-amdahl-output"></a>
 </h2>
 <hr class="half-width">
 <p>Another thing about our application <code>amdahl</code> is that we
@@ -1582,8 +1558,7 @@ specifying a parallel proportion of 90%:</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge6"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Create a YAML file for a value of <code>-p</code> of 0.999 (the
 default value is 0.8) for the case where we have a single node and 4
@@ -1597,7 +1572,7 @@ script is working.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">YML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1629,7 +1604,6 @@ script is working.</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="environment-variables">Environment variables<a class="anchor" aria-label="anchor" href="#environment-variables"></a>
-<a class="anchor" aria-label="anchor" href="#environment-variables"></a>
 </h2>
 <hr class="half-width">
 <p>Our current directory is probably starting to fill up with
@@ -1656,8 +1630,7 @@ lesson.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge7"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Modify your YAML so that subsequent runs will be grouped into a
 shared parent directory (for example, <code>Episode3</code>, as
@@ -1670,7 +1643,7 @@ above).</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Show me the solution </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb21">
 <h3 class="code-label">YML<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1706,7 +1679,6 @@ above).</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="dry-run---dry-mode">Dry-run (<code>--dry</code>) mode<a class="anchor" aria-label="anchor" href="#dry-run---dry-mode"></a>
-<a class="anchor" aria-label="anchor" href="#dry-run---dry-mode"></a>
 </h2>
 <hr class="half-width">
 <p>It’s often useful to run Maestro in <code>--dry</code> mode, which
@@ -1718,8 +1690,7 @@ actually running jobs. You will see this parameter if you run
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge8"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Do a couple <code>dry</code> runs using the script created in the
 last challenge. This should help you verify that a new directory
@@ -1741,7 +1712,7 @@ Instead, you just run</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution8" aria-expanded="false" aria-controls="collapseSolution8">
   <h4 class="accordion-header" id="headingSolution8"> Show me the solution </h4>
 </button>
-<div id="collapseSolution8" class="accordion-collapse collapse" data-bs-parent="#accordionSolution8" aria-labelledby="headingSolution8">
+<div id="collapseSolution8" class="accordion-collapse collapse" aria-labelledby="headingSolution8" data-bs-parent="#accordionSolution8">
 <div class="accordion-body">
 <p>After running</p>
 <div class="codewrapper sourceCode" id="cb23">
@@ -1760,8 +1731,7 @@ Instead, you just run</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
-</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul>
 <li>“Adding <code>$(LAUNCHER)</code> before commands signals to Maestro
@@ -1818,8 +1788,7 @@ any links that you are not going to use.
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
-</h3>
+<h3 class="callout-title">Callout</h3>
 <div class="callout-content">
 <p>If you’ve opened a new terminal, make sure Maestro is available.</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -1830,8 +1799,7 @@ any links that you are not going to use.
 </div>
 </div>
 </div>
-<section><h2 class="section-heading" id="d-r-y--dont-repeat-yourself">D.R.Y. (Don’t Repeat Yourself)<a class="anchor" aria-label="anchor" href="#d.r.y.-dont-repeat-yourself"></a>
-<a class="anchor" aria-label="anchor" href="#d-r-y--dont-repeat-yourself"></a>
+<section><h2 class="section-heading" id="d-r-y--dont-repeat-yourself">D.R.Y. (Don’t Repeat Yourself)<a class="anchor" aria-label="anchor" href="#d-r-y--dont-repeat-yourself"></a>
 </h2>
 <hr class="half-width">
 <div id="callout2" class="callout">
@@ -1839,8 +1807,7 @@ any links that you are not going to use.
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout2"></a>
-</h3>
+<h3 class="callout-title">Callout</h3>
 <div class="callout-content">
 <p>In many programming languages, the bulk of the language features are
 there to allow the programmer to describe long-winded computational
@@ -1859,7 +1826,6 @@ but forget to rename it elsewhere).</p>
 ourselves by using <em>environment variables</em> as
 <em>placeholders</em>.</p>
 </section><section><h2 class="section-heading" id="placeholders">Placeholders<a class="anchor" aria-label="anchor" href="#placeholders"></a>
-<a class="anchor" aria-label="anchor" href="#placeholders"></a>
 </h2>
 <hr class="half-width">
 <p>Over the course of this lesson, we want to use the
@@ -1929,8 +1895,7 @@ define <code>procs: 8</code>. While we’re at it, let’s update
 <i class="callout-icon" data-feather="message-circle"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#discussion1"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Update <code>amdahl.yaml</code> to include the new info shown above.
 Run a dry run to see what your output directory structure looks
@@ -1994,8 +1959,7 @@ call to <code>srun &lt;insert resource requests&gt;</code>.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout3"></a>
-</h3>
+<h3 class="callout-title">Callout</h3>
 <div class="callout-content">
 <p>Note that in the context of Maestro, the general term for the
 “placeholders” declared in the <code>env</code> block are <a href="https://maestrowf.readthedocs.io/en/latest/Maestro/specification.html#environment-tokens" class="external-link">“tokens”</a>.</p>
@@ -2007,8 +1971,7 @@ call to <code>srun &lt;insert resource requests&gt;</code>.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge1"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Run your updated <code>amdahl.yaml</code> and check results, to
 verify your workflow is working with the changes you’ve made so far.</p>
@@ -2020,7 +1983,7 @@ verify your workflow is working with the changes you’ve made so far.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The full YAML text is</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -2065,8 +2028,7 @@ verify your workflow is working with the changes you’ve made so far.</p>
 </div>
 </div>
 </div>
-</section><section><h2 class="section-heading" id="maestros-global-parameters">Maestro’s global.parameters<a class="anchor" aria-label="anchor" href="#maestros-global.parameters"></a>
-<a class="anchor" aria-label="anchor" href="#maestros-global-parameters"></a>
+</section><section><h2 class="section-heading" id="maestros-global-parameters">Maestro’s global.parameters<a class="anchor" aria-label="anchor" href="#maestros-global-parameters"></a>
 </h2>
 <hr class="half-width">
 <p>We’re almost ready to perform our scaling study – to see how the
@@ -2150,8 +2112,7 @@ we can simply condense them to one step.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge2"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Run <code>maestro run --dry amdahl.yaml</code> using the above YAML
 file and investigate the resulting directory structure. How does the
@@ -2165,7 +2126,7 @@ output directory organization?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>Under your current working directory, you should see a directory
 structure created with the following format –
@@ -2213,8 +2174,7 @@ running via <code>squeue -u &lt;username&gt;</code>.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
-</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul>
 <li>Environment variables are placeholders defined under the
@@ -2271,8 +2231,7 @@ step?</li>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
-</h3>
+<h3 class="callout-title">Callout</h3>
 <div class="callout-content">
 <p>If you’ve opened a new terminal, make sure Maestro is available.</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -2284,7 +2243,6 @@ step?</li>
 </div>
 </div>
 <section><h2 class="section-heading" id="a-pipeline-of-multiple-rules">A pipeline of multiple rules<a class="anchor" aria-label="anchor" href="#a-pipeline-of-multiple-rules"></a>
-<a class="anchor" aria-label="anchor" href="#a-pipeline-of-multiple-rules"></a>
 </h2>
 <hr class="half-width">
 <p>In this episode, we will plot the scaling results generated in the
@@ -2349,8 +2307,7 @@ node.</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge1"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Run the above script with</p>
 <div class="codewrapper sourceCode" id="cb3">
@@ -2378,7 +2335,7 @@ completed?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>You’ll likely see output somewhat similar to</p>
 <div class="codewrapper sourceCode" id="cb5">
@@ -2438,8 +2395,7 @@ see</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge2"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Update <code>depends.yaml</code> to make <code>date-login</code> wait
 for <code>date-batch</code> to complete before running. Then rerun
@@ -2454,7 +2410,7 @@ changed?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <p>This time, you should see that the date printed from the login node
 is <em>at least</em> 10 seconds later than the date printed on the batch
@@ -2483,8 +2439,7 @@ Tue Mar 26 15:10:53 PDT 2024</code></pre>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout2"></a>
-</h3>
+<h3 class="callout-title">Callout</h3>
 <div class="callout-content">
 <p>Slurm can also be used to define dependencies. How is using Maestro
 to define the order of our steps any different?</p>
@@ -2499,7 +2454,6 @@ jobs.</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="a-step-that-waits-for-all-iterations-of-its-dependency">A step that waits for all iterations of its dependency<a class="anchor" aria-label="anchor" href="#a-step-that-waits-for-all-iterations-of-its-dependency"></a>
-<a class="anchor" aria-label="anchor" href="#a-step-that-waits-for-all-iterations-of-its-dependency"></a>
 </h2>
 <hr class="half-width">
 <p>Let’s return to our Amdahl scaling study and the YAML with which we
@@ -2566,8 +2520,7 @@ add</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge3"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Add the <code>plot</code> step</p>
 <div class="codewrapper sourceCode" id="cb14">
@@ -2598,7 +2551,7 @@ add</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Doing a dry run with <code>amdahl.yaml</code> (text below) should
 generate an <code>Amdahl_{Date &amp; time stamp}</code> directory with a
@@ -2734,8 +2687,7 @@ after <em>ALL</em> <code>amdahl</code> steps, we’ll add a
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge4"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Update your <code>amdahl.yaml</code> so that <code>plot</code> runs
 after <code>amdahl</code> has run with all values of <code>TASKS</code>.
@@ -2749,7 +2701,7 @@ once.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> Show me the solution </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
 <div class="accordion-body">
 <p>Your new directory structure should look something like</p>
 <div class="codewrapper sourceCode" id="cb27">
@@ -2780,7 +2732,6 @@ subdirectories.</p>
 </div>
 </div>
 </section><section><h2 class="section-heading" id="using-the-outputs-from-a-previous-step">Using the outputs from a previous step<a class="anchor" aria-label="anchor" href="#using-the-outputs-from-a-previous-step"></a>
-<a class="anchor" aria-label="anchor" href="#using-the-outputs-from-a-previous-step"></a>
 </h2>
 <hr class="half-width">
 <div class="section level3">
@@ -2834,8 +2785,7 @@ JSON files as inputs to our python script:</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge5"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Generate a scaling plot by manually specifying the JSON files
 produced from a previous run of <code>amdahl.yaml</code>.</p>
@@ -2847,7 +2797,7 @@ produced from a previous run of <code>amdahl.yaml</code>.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> Show me the solution </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
 <div class="accordion-body">
 <p>The resulting JPEG should look something like</p>
 <figure><img src="../files/example-scaling-plot.jpg" alt="Scaling study for 95% parallel task" class="figure mx-auto d-block"><div class="figcaption">Scaling study for 95% parallel task</div>
@@ -2896,8 +2846,7 @@ including our <code>TASKS.*</code> directories, are written.</p>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout3"></a>
-</h3>
+<h3 class="callout-title">Callout</h3>
 <div class="callout-content">
 <p>Where does the <code>plot_terse_amdahl_results.py</code> script live?
 In Maestro, <code>$(SPECROOT)</code> specifies the root directory from
@@ -2922,8 +2871,7 @@ precise:</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge6"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Update <code>amdahl.yaml</code> so that</p>
 <ul>
@@ -2939,7 +2887,7 @@ code using [2, 4, 8, 16, 32] tasks</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> Show me the solution </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
 <div class="accordion-body">
 <p>Your YAML file should look something like</p>
 <div class="codewrapper sourceCode" id="cb39">
@@ -2993,8 +2941,7 @@ code using [2, 4, 8, 16, 32] tasks</li>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div id="errors-are-normal" class="callout-inner">
-<h3 class="callout-title">Errors are normal<a class="anchor" aria-label="anchor" href="#errors-are-normal"></a>
-</h3>
+<h3 class="callout-title">Errors are normal</h3>
 <div class="callout-content">
 <p>Don’t be disheartened if you see errors when first testing your new
 Maestro pipelines. There is a lot that can go wrong when writing a new
@@ -3011,8 +2958,7 @@ work to the queue.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
-</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul>
 <li>We can control the order of steps run in a study by creating
@@ -3073,8 +3019,7 @@ amounts of parallel work.</li>
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout1"></a>
-</h3>
+<h3 class="callout-title">Callout</h3>
 <div class="callout-content">
 <p>If you’ve opened a new terminal, make sure Maestro is available.</p>
 <div class="codewrapper sourceCode" id="cb1">
@@ -3086,7 +3031,6 @@ amounts of parallel work.</li>
 </div>
 </div>
 <section><h2 class="section-heading" id="adding-a-second-parameter">Adding a second parameter<a class="anchor" aria-label="anchor" href="#adding-a-second-parameter"></a>
-<a class="anchor" aria-label="anchor" href="#adding-a-second-parameter"></a>
 </h2>
 <hr class="half-width">
 <p>In this episode, we want to vary <code>P</code>, the fraction of
@@ -3194,8 +3138,7 @@ of <code>P</code> 5 times:</p>
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge1"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Run the workflow above. Do you generate <code>output.jpg</code>? If
 not, why not?</p>
@@ -3309,8 +3252,7 @@ input files – those in the <code>P.0.5.TASKS*</code> subdirectories of
 <i class="callout-icon" data-feather="zap"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Challenge<a class="anchor" aria-label="anchor" href="#challenge2"></a>
-</h3>
+<h3 class="callout-title">Challenge</h3>
 <div class="callout-content">
 <p>Modify your workflow as discussed above to generate output plots for
 two different values of P. Open these plots and verify they are
@@ -3395,8 +3337,7 @@ step to run twice. As a result, two subdirectories under
 <i class="callout-icon" data-feather="bell"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Callout<a class="anchor" aria-label="anchor" href="#callout2"></a>
-</h3>
+<h3 class="callout-title">Callout</h3>
 <div class="callout-content">
 <p>Instead of modifying the path to our <code>amdahl.json</code> files
 to <code>$(run-amdahl.workspace)/P.$(P).TASKS.*/amdahl.json</code>, we
@@ -3415,8 +3356,7 @@ parameter in Maestro.</p>
 <i class="callout-icon" data-feather="key"></i>
 </div>
 <div class="callout-inner">
-<h3 class="callout-title">Key Points<a class="anchor" aria-label="anchor" href="#keypoints1"></a>
-</h3>
+<h3 class="callout-title">Key Points</h3>
 <div class="callout-content">
 <ul>
 <li>“Multiple parameters can be defined under
@@ -3457,7 +3397,7 @@ any links that you are not going to use.
         <p>Materials licensed under <a href="LICENSE.html">CC-BY 4.0</a> by the authors</p>
 
         <p>Template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">CC-BY 4.0</a> by <a href="https://carpentries.org/" class="external-link">The Carpentries</a></p>
-        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.5" class="external-link">sandpaper (0.16.5)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.3" class="external-link">varnish (1.0.3)</a></p>
+        <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.16.6" class="external-link">sandpaper (0.16.6)</a>, <a href="https://github.com/carpentries/pegboard/tree/0.7.6" class="external-link">pegboard (0.7.6)</a>, and <a href="https://github.com/carpentries/varnish/tree/1.0.4" class="external-link">varnish (1.0.4)</a></p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -3480,8 +3420,8 @@ any links that you are not going to use.
   "url": "https://carpentries-incubator.github.io/hpc-workflows/instructor/aio.html",
   "identifier": "https://carpentries-incubator.github.io/hpc-workflows/instructor/aio.html",
   "dateCreated": "2024-04-02",
-  "dateModified": "2024-08-22",
-  "datePublished": "2024-08-22"
+  "dateModified": "2024-08-27",
+  "datePublished": "2024-08-27"
 }
 
   </script><script>
