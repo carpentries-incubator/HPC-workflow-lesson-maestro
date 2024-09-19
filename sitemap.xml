@@ -1,105 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/01-introduction.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/01-introduction.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/02-maestro_on_the_cluster.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/02-maestro_on_the_cluster.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/03-maestro-and-mpi.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/03-maestro-and-mpi.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/04-placeholders.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/04-placeholders.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/05-chaining_rules.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/05-chaining_rules.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/06-multiple-parameters.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/06-multiple-parameters.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/404.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/404.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/CODE_OF_CONDUCT.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/LICENSE.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/aio.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/aio.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/images.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/images.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/index.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/index.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/01-introduction.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/01-introduction.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/02-maestro_on_the_cluster.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/02-maestro_on_the_cluster.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/03-maestro-and-mpi.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/03-maestro-and-mpi.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/04-placeholders.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/04-placeholders.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/05-chaining_rules.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/05-chaining_rules.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/06-multiple-parameters.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/06-multiple-parameters.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/404.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/404.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/CODE_OF_CONDUCT.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/LICENSE.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/aio.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/aio.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/images.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/images.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/index.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/index.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/instructor-notes.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/instructor-notes.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/introduction.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/introduction.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/key-points.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/key-points.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/profiles.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/profiles.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor/reference.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor/reference.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/instructor-notes.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/instructor-notes.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/introduction.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/introduction.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/key-points.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/key-points.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/profiles.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/profiles.html</loc>
   </url>
   <url>
-    <loc>https://carpentries-incubator.github.io/hpc-workflows/reference.html</loc>
+    <loc>https://carpentries-incubator.github.io/HPC-workflow-lesson-maestro/reference.html</loc>
   </url>
 </urlset>
